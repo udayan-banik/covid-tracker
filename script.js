@@ -122,9 +122,9 @@ getJSON(url, function(err, data){
 				if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
 					/*console.log(iter3);*/
 					if(dose == 1){
-						cell1.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose1;}
+						cell1.innerHTML = "<center>" + data.centers[iter1].sessions[iter2].available_capacity_dose1 + "</center>";}
 					else if(dose == 2){
-						cell1.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose2;}
+						cell1.innerHTML = "<center>" + data.centers[iter1].sessions[iter2].available_capacity_dose2 + "</center>";}
 					
 					cell2.innerHTML = data.centers[iter1].sessions[iter2].date;
 				  	cell3.innerHTML = data.centers[iter1].name;
