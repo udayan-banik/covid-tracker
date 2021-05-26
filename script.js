@@ -14,6 +14,8 @@ var yy = op.elements.yy.value;
 
 var age = op.elements.age.value;
 
+var dose = op.elements.dose.value;
+
 var center_id = "79199";
 
 var disp = document.getElementById('demo');
@@ -26,7 +28,7 @@ disp.innerHTML = "";
 *******Console Output Header********
 //////////////////////////////////*/
 
-console.log("For pin-"+pin+" 7 Days from "+dd+"/"+mm+"/"+yy+" Age: "+age);
+console.log("For pin-"+pin+" 7 Days from "+dd+"/"+mm+"/"+yy+" Age: "+age+" Dose: "+dose);
 
 
 /******************Test Parts**********************/
@@ -78,11 +80,16 @@ getJSON(url, function(err, data){
 
 		for(var iter1 = 0; iter1<data.centers.length; iter1++)
 			for(var iter2 = 0; iter2<data.centers[iter1].sessions.length; iter2++){
-				var iter3 = data.centers[iter1].sessions[iter2].available_capacity+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
+				/*var iter3 = data.centers[iter1].sessions[iter2].available_capacity+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;*/
+				var iter3 = data.centers[iter1].sessions[iter2].available_capacity_dose1+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
+				var iter4 = data.centers[iter1].sessions[iter2].available_capacity_dose2+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
 				
-				if(data.centers[iter1].sessions[iter2].available_capacity <= 1 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
+				if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
 					/*console.log(iter3);*/
-					disp.innerHTML += "<center>" + iter3 + "<br>" + "</center>";}
+					if(dose == 1){
+						disp.innerHTML += "<center>" + iter3 + "<br>" + "</center>";}
+					else if(dose == 2){
+						disp.innerHTML += "<center>" + iter4 + "<br>" + "</center>";}}
 
 				else{
 					disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";}
@@ -110,3 +117,18 @@ getJSON(url, function(err, data){
 
 
  };
+
+
+
+/*if dose == 1 
+if dose == 2
+
+
+if(data.centers[iter1].sessions[iter2].available_capacity_dose1
+data.centers[iter1].sessions[iter2].available_capacity_dose2
+
+
+
+
+data.centers[iter1].sessionsdose1
+dose2*/
