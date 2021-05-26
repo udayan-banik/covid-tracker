@@ -22,6 +22,13 @@ var disp = document.getElementById('demo');
 	
 var table = document.getElementById('table_info');
 
+var header = table.createTHead();
+  cell.innerHTML = "<b>Available Capacity</b>";
+  cell.innerHTML = "<b>Date</b>";
+  cell.innerHTML = "<b>Name of Center</b>";
+  cell.innerHTML = "<b>Address</b>";
+  cell.innerHTML = "<b>Block Name</b>";
+	
 disp.innerHTML = "";
 
 //centers[0].sessions[0].min_age_limit
