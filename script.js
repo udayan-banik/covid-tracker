@@ -23,11 +23,23 @@ var disp = document.getElementById('demo');
 var table = document.getElementById('table_info');
 
 var header = table.createTHead();
-  cell1.innerHTML = "<b>Available Capacity</b>";
-  cell2.innerHTML = "<b>Date</b>";
-  cell3.innerHTML = "<b>Name of Center</b>";
-  cell4.innerHTML = "<b>Address</b>";
-  cell5.innerHTML = "<b>Block Name</b>";
+	
+var hcell1 = header.insertCell(0);
+
+var hcell2 = header.insertCell(1);
+	
+var hcell3 = header.insertCell(2);
+	
+var hcell4 = header.insertCell(3);
+	
+var hcell5 = header.insertCell(4);
+	
+	
+  hcell1.innerHTML = "<b>Available Capacity</b>";
+  hcell2.innerHTML = "<b>Date</b>";
+  hcell3.innerHTML = "<b>Name of Center</b>";
+  hcell4.innerHTML = "<b>Address</b>";
+  hcell5.innerHTML = "<b>Block Name</b>";
 	
 disp.innerHTML = "";
 
