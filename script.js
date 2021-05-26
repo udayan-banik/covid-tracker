@@ -22,17 +22,22 @@ var disp = document.getElementById('demo');
 	
 var table = document.getElementById('table_info');
 
+/*-------Table Header-----------*/
+
+	
 var header = table.createTHead();
 	
-var hcell1 = header.insertCell(0);
+var row1 = header.insertRow(0);
+	
+var hcell1 = row1.insertCell(0);
 
-var hcell2 = header.insertCell(1);
+var hcell2 = row1.insertCell(1);
 	
-var hcell3 = header.insertCell(2);
+var hcell3 = row1.insertCell(2);
 	
-var hcell4 = header.insertCell(3);
+var hcell4 = row1.insertCell(3);
 	
-var hcell5 = header.insertCell(4);
+var hcell5 = row1.insertCell(4);
 	
 	
   hcell1.innerHTML = "<b>Available Capacity</b>";
