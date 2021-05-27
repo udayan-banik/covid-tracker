@@ -75,42 +75,50 @@ getJSON(url, function(err, data){
 	if(err !== null)
 		console.log("something went wrong"+err);
 	else if(err == null){
-		//console.log(data);/*start*/
+		// console.log(data);/*start*/
+
+		// boolean to check vaccine availability
+		var isAvailable = false;
+		if(data.centers.length > 0) {
+			for (let i=0; i<data.centers.length; i++) {
+				for (let j=0; j<data.centers[i].sessions.length; j++) {
+					if(data.centers[i].sessions[j].min_age_limit == age && data.centers[i].sessions[j].available_capacity > 0) {
+						isAvailable = true;
+					}
+
+					if(isAvailable)
+						break;
+				}
+				if(isAvailable)
+					break;
+			}
+		}
 		
-		createTable();
+		if(isAvailable) {
+			createTable();
+		
 
-
-
-		for(var iter1 = 0; iter1<data.centers.length; iter1++)
-			for(var iter2 = 0; iter2<data.centers[iter1].sessions.length; iter2++){
-				/*var iter3 = data.centers[iter1].sessions[iter2].available_capacity+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
-				var iter3 = data.centers[iter1].sessions[iter2].available_capacity_dose1+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
-				var iter4 = data.centers[iter1].sessions[iter2].available_capacity_dose2+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;*/
-				
-				
-				
-				
-				
-				if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
-					/*console.log(iter3);*/
-					if(dose == 1){
-						addRow(dose, data, iter1, iter2);
-					}
-					else if(dose == 2){
-						addRow(dose, data, iter1, iter2);
-					}
+			for(var iter1 = 0; iter1<data.centers.length; iter1++)
+				for(var iter2 = 0; iter2<data.centers[iter1].sessions.length; iter2++){
+					/*var iter3 = data.centers[iter1].sessions[iter2].available_capacity+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;*/			
 					
-				}
-
-				else{
-					disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";
-				}
-				
-				
-
-				/*dont remove used for indent maintenance*/}
+					
+					
+					if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
+						/*console.log(iter3);*/
+						if(dose == 1){
+							addRow(dose, data, iter1, iter2);
+						}
+						else if(dose == 2){
+							addRow(dose, data, iter1, iter2);
+						}
+						
+					}
+					/*dont remove used for indent maintenance*/}
 			
-		
+		} else {
+			disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";
+		}
 					
 	
     }
@@ -138,8 +146,8 @@ function createTable() {
 	hcell0.innerHTML = "<b>Available Capacity</b>";
 	hcell1.innerHTML = "<b>Date</b>";	
 	hcell2.innerHTML = "<b>Center</b>";
-	hcell4.innerHTML = "<b>Address</b>";
-	hcell3.innerHTML = "<b>Block name</b>";
+	hcell3.innerHTML = "<b>Address</b>";
+	hcell4.innerHTML = "<b>Block name</b>";
 
 	disp.appendChild(tbl);
 }
