@@ -2,15 +2,22 @@ function gJ(){
 
 console.clear();
 
+// added indian time locale and replaced all slashes by hyphens
+var dateString = new Date(document.getElementById("date-input").value).toLocaleDateString('en-IN', {
+	day: '2-digit',
+	month: '2-digit',
+	year: 'numeric',
+}).replaceAll("/", "-");
+
 var op = document.getElementById('form');
 
 var pin = op.elements.pin.value;
 
-var dd = op.elements.dd.value;
+// var dd = dateObj.getDate();
 
-var mm = op.elements.mm.value;
+// var mm = dateObj.getMonth() + 01;
 
-var yy = op.elements.yy.value;
+// var yy = dateObj.getFullYear();
 
 var age = op.elements.age.value;
 
@@ -30,7 +37,7 @@ disp.innerHTML = "";
 *******Console Output Header********
 //////////////////////////////////*/
 
-console.log("For pin-"+pin+" 7 Days from "+dd+"/"+mm+"/"+yy+" Age: "+age+" Dose: "+dose);
+console.log("For pin-"+pin+" 7 Days from "+ dateString +" Age: "+age+" Dose: "+dose);
 
 
 /******************Test Parts**********************/
@@ -55,7 +62,7 @@ console.log("For pin-"+pin+" 7 Days from "+dd+"/"+mm+"/"+yy+" Age: "+age+" Dose:
 ******************************************************/
 
 
-var url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+pin+"&date="+dd+"-"+mm+"-"+yy;
+var url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+pin+"&date="+dateString;
 
 var getJSON = function(url, callback) {
 	var xhr = new XMLHttpRequest();
