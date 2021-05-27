@@ -21,30 +21,6 @@ var center_id = "79199";
 var disp = document.getElementById('demo');
 	
 var table = document.getElementById('table_info');
-
-/*-------Table Header-----------*/
-
-	
-var header = table.createTHead();
-	
-var row1 = header.insertRow(0);
-	
-var hcell1 = row1.insertCell(0);
-
-var hcell2 = row1.insertCell(1);
-	
-var hcell3 = row1.insertCell(2);
-	
-var hcell4 = row1.insertCell(3);
-	
-var hcell5 = row1.insertCell(4);
-	
-	
-  hcell1.innerHTML = "<b>Available Capacity</b>";
-  hcell2.innerHTML = "<b>Date</b>";
-  hcell3.innerHTML = "<b>Name of Center</b>";
-  hcell4.innerHTML = "<b>Address</b>";
-  hcell5.innerHTML = "<b>Block Name</b>";
 	
 disp.innerHTML = "";
 
@@ -101,7 +77,8 @@ getJSON(url, function(err, data){
 	else if(err == null){
 		//console.log(data);/*start*/
 		
-		
+		createTable();
+
 
 
 		for(var iter1 = 0; iter1<data.centers.length; iter1++)
@@ -110,29 +87,24 @@ getJSON(url, function(err, data){
 				var iter3 = data.centers[iter1].sessions[iter2].available_capacity_dose1+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;
 				var iter4 = data.centers[iter1].sessions[iter2].available_capacity_dose2+" available on "+data.centers[iter1].sessions[iter2].date+" at "+data.centers[iter1].name+", "+data.centers[iter1].address+", "+data.centers[iter1].block_name;*/
 				
-				var row = table.insertRow(-1);
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
-				var cell3 = row.insertCell(2);
-				var cell4 = row.insertCell(3);
-				var cell5 = row.insertCell(4);
+				
 				
 				
 				
 				if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
 					/*console.log(iter3);*/
 					if(dose == 1){
-						cell1.innerHTML = "<center>" + data.centers[iter1].sessions[iter2].available_capacity_dose1 + "</center>";}
+						addRow(dose, data, iter1, iter2);
+					}
 					else if(dose == 2){
-						cell1.innerHTML = "<center>" + data.centers[iter1].sessions[iter2].available_capacity_dose2 + "</center>";}
+						addRow(dose, data, iter1, iter2);
+					}
 					
-					cell2.innerHTML = data.centers[iter1].sessions[iter2].date;
-				  	cell3.innerHTML = data.centers[iter1].name;
-				  	cell4.innerHTML = data.centers[iter1].address;
-					cell5.innerHTML = data.centers[iter1].block_name;}
+				}
 
 				else{
-					disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";}
+					disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";
+				}
 				
 				
 
@@ -146,7 +118,52 @@ getJSON(url, function(err, data){
 
 /*end*/});
 
+/*####################################################
+#################||T A B L E||######################
+####################################################*/
 
+
+
+function createTable() {
+	var tbl = document.createElement("table");
+	tbl.setAttribute("id", "table_info")
+	var thd = tbl.createTHead();
+	var hrow = thd.insertRow(0);
+	var hcell0 = hrow.insertCell(0);
+	var hcell1 = hrow.insertCell(1);
+	var hcell2 = hrow.insertCell(2);
+	var hcell3 = hrow.insertCell(3);
+	var hcell4 = hrow.insertCell(4);
+
+	hcell0.innerHTML = "<b>Available Capacity</b>";
+	hcell1.innerHTML = "<b>Date</b>";	
+	hcell2.innerHTML = "<b>Center</b>";
+	hcell4.innerHTML = "<b>Address</b>";
+	hcell3.innerHTML = "<b>Block name</b>";
+
+	disp.appendChild(tbl);
+}
+
+function addRow(dose, data, iter1, iter2) {
+	var tbl = document.getElementById("table_info");
+	var trow = tbl.insertRow(-1);
+
+	var cell0 = trow.insertCell(0);
+	var cell1 = trow.insertCell(1);
+	var cell2 = trow.insertCell(2);
+	var cell3 = trow.insertCell(3);
+	var cell4 = trow.insertCell(4);
+
+	if(dose == 1)
+		cell0.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose1;
+	if(dose == 2)
+		cell0.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose2;
+	cell1.innerHTML = data.centers[iter1].sessions[iter2].date;
+	cell2.innerHTML = data.centers[iter1].name;
+	cell3.innerHTML = data.centers[iter1].address;
+	cell4.innerHTML = data.centers[iter1].block_name;
+
+}
 
 /*####################################################
 #################||S E A R C H||######################
