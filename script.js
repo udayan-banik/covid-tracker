@@ -200,7 +200,7 @@ function darkMode() {
 	writing.innerHTML = "Dark Mode";}
 
    eleme.classList.toggle("dark-mode");
-}
+};
 
 /*if dose == 1 
 if dose == 2
