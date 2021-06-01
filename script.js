@@ -190,7 +190,17 @@ function addRow(dose, data, iter1, iter2) {
 
  };
 
+function darkMode() {
+   var eleme = document.body;
+	
+   var writing = document.getElementById("mode");
+   if(writing.innerHTML === "Dark Mode"){
+	writing.innerHTML = "Light Mode";}
+   else{
+	writing.innerHTML = "Dark Mode";}
 
+   eleme.classList.toggle("dark-mode");
+}
 
 /*if dose == 1 
 if dose == 2
