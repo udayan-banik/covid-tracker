@@ -51,3 +51,78 @@ i.fa.fa-bars {
     float: none;
   }
 }
+
+.custom-select {
+  position: relative;
+  margin: 50px auto;
+}
+
+/* hiding the original select element */
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: rgba(146, 224, 226, 0.74);
+}
+
+/* Styling the arrow inside the select box with border color and no content */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #666 transparent transparent transparent;
+}
+
+/* reversing the arrow direction when selected */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #666 transparent;
+  top: 7px;
+}
+
+.select-items div, .select-selected {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, .5);
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-items {
+  position: absolute;
+  top: 100%; /*skip by a block downward*/
+  background-color:rgba(146, 224, 226, 0.74);
+  /* left and right set to zero to exactly fit the parent div */
+  left: 0;
+  right: 0;
+  height: 500px;
+  overflow: scroll;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, .2);
+  color: white;
+}
+
+/* positioning the footer at the bottom of page */
+
+hr {
+  position: fixed;
+  bottom: 15px;
+  width: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;  /* top, bottom, etc works wrt parent elements height and width */
+  width: 100%;
+}
