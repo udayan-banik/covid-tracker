@@ -1,3 +1,7 @@
+body {
+  margin:0;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -116,13 +120,17 @@ i.fa.fa-bars {
 /* positioning the footer at the bottom of page */
 
 hr {
-  position: fixed;
+  /* position: relative; */
   bottom: 15px;
   width: 100%;
 }
 
 footer {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;  /* top, bottom, etc works wrt parent elements height and width */
   width: 100%;
+}
+
+a {
+  text-decoration: none;
 }
