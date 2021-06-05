@@ -26,8 +26,10 @@
   }
             
   @media (prefers-color-scheme: dark) {
-        background-color: #383742;
-            color: white;	
+        .dark-mode{
+            background-color: #383742;
+            color: white;}	
+        
     }
 
   @media (prefers-color-scheme: light) {
@@ -36,10 +38,7 @@
           color: black;
         }
   }
-    
-.dark-mode{
-            background-color: #383742;
-            color: white;}
+        
         
   .my-btn-left {
         
@@ -69,13 +68,15 @@
     height: 0.8%%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 40px;
+    border-radius: 10px;
     resize: vertical;
   }
 
   .floating-action-button {
-    width: 210px;
-   height: 70px;
+    width: 70px;
+   height: 35px;
+   min-width: 20%;
+   max-width: 40%;
    /* background-color: rgb(0, 255, 242); */
    /* border-radius: 10%; */
    box-shadow: 0 5px 11px 4px #666;
@@ -86,8 +87,8 @@
    text-align: center;
    line-height: 70px;
  
-   position: fixed;
-   /* float: right; */
+   /* position: fixed; */
+   float: right;
    right: 50px;
    bottom: 50px;
   }
@@ -95,6 +96,12 @@
   .floating-action-button:hover {
     box-shadow: 0 6px 14px 0 #666;
    transform: scale(1.05);
+  }
+
+  img {
+     height: 35px;
+     width: 100%;
+     padding: auto;
   }
 
   
