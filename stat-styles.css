@@ -119,9 +119,12 @@ i.fa.fa-bars {
   display: none;
 }
 
+.select-items div:hover {
+  color: white;
+}
+
 .select-items div:hover, .same-as-selected {
   background-color: #AAA;
-  color: white;
   border-radius: 5px;
 }
 
