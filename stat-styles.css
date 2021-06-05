@@ -91,6 +91,7 @@ i.fa.fa-bars {
 
 .select-items div, .select-selected {
   padding: 8px 16px;
+  background-color: white;
   /* border: 1px solid transparent; */
   /* border-color: transparent transparent rgba(0, 0, 0, .5); */
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
@@ -109,6 +110,8 @@ i.fa.fa-bars {
   right: 0;
   height: 500px;
   overflow: scroll;
+  overflow-x: hidden;
+  box-shadow:0 2px 2px rgb(0 0 0 / 20%);
   z-index: 99;
 }
 
@@ -117,7 +120,7 @@ i.fa.fa-bars {
 }
 
 .select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: #AAA;
   color: white;
   border-radius: 5px;
 }
