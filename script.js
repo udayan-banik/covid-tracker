@@ -192,14 +192,19 @@ function addRow(dose, data, iter1, iter2) {
 
 function darkMode() {
    var eleme = document.body;
-	
+//    var checkClick = true;
+
+   
    var writing = document.getElementById("mode");
    if(writing.innerHTML === "Dark Mode"){
 	writing.innerHTML = "Light Mode";}
    else{
-	writing.innerHTML = "Dark Mode";}
+	writing.innerHTML = "Dark Mode";
+	// checkClick = false;
+	}
 
-   eleme.classList.toggle("dark-mode");
+	// if(checkClick)
+   		eleme.classList.toggle("dark-mode");
 };
 
 /*if dose == 1 

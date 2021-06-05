@@ -1,3 +1,7 @@
+body {
+  margin:0;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -54,7 +58,7 @@ i.fa.fa-bars {
 
 .custom-select {
   position: relative;
-  margin: 50px auto;
+  margin: 5px auto;
 }
 
 /* hiding the original select element */
@@ -63,7 +67,8 @@ i.fa.fa-bars {
 }
 
 .select-selected {
-  background-color: rgba(146, 224, 226, 0.74);
+  /* background-color: rgba(146, 224, 226, 0.74); */
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
 }
 
 /* Styling the arrow inside the select box with border color and no content */
@@ -74,8 +79,8 @@ i.fa.fa-bars {
   right: 10px;
   width: 0;
   height: 0;
-  border: 6px solid transparent;
-  border-color: #666 transparent transparent transparent;
+  border: 6px solid; /* transparent;*/
+  border-color: #666 transparent transparent transparent;*/
 }
 
 /* reversing the arrow direction when selected */
@@ -86,8 +91,10 @@ i.fa.fa-bars {
 
 .select-items div, .select-selected {
   padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, .5);
+  /* border: 1px solid transparent; */
+  /* border-color: transparent transparent rgba(0, 0, 0, .5); */
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  border-radius: 5px;
   cursor: pointer;
   user-select: none;
 }
@@ -95,8 +102,9 @@ i.fa.fa-bars {
 .select-items {
   position: absolute;
   top: 100%; /*skip by a block downward*/
-  background-color:rgba(146, 224, 226, 0.74);
+  /* background-color:rgba(146, 224, 226, 0.74); */
   /* left and right set to zero to exactly fit the parent div */
+  /* background-color: rgb(255, 255, 255); */
   left: 0;
   right: 0;
   height: 500px;
@@ -111,18 +119,25 @@ i.fa.fa-bars {
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, .2);
   color: white;
+  border-radius: 5px;
+}
+
+.select-items:last-child {
+  border-radius: 5px;
 }
 
 /* positioning the footer at the bottom of page */
-
-hr {
+hr, footer{
+  
   position: fixed;
-  bottom: 15px;
-  width: 100%;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(0, 255, 234);
+   color: black;
+   text-align: center;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;  /* top, bottom, etc works wrt parent elements height and width */
-  width: 100%;
+a {
+  text-decoration: none;
 }
