@@ -47,8 +47,8 @@
     transition: 0.3s;
     width: 100vw;
     border-radius: 5px;
-    padding: 0px;
     padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   input[type=text], input[type=date] {
