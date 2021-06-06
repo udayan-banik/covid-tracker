@@ -4,12 +4,14 @@
 
 <head>
 
-<title>Covid stats</title>
+<title>CoWin UdaySagar</title>
 
 <meta name = "viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stat-styles.css">
+<link rel="stylesheet" href="./index-styles.css">
 <script src="statscheck.js"></script>
+<script src="script.js"></script>
 
 </head>
 
@@ -17,27 +19,18 @@
 
 <!--body-->
 
-<body>
-
+<body style="margin: 0">
 
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="javascript:void(0)" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-  <!-- <div class="dropdown">
-    <button class="dropbtn">Dropdown 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div>  -->
-</div>
+    <a href="./index.html">Home</a>
+    <a href="./stat.html" class="active">Stats</a>
+    <a href="#contact">Contact</a>
+    <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a>
+    <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+    
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
 
 
 <br>
@@ -45,7 +38,7 @@
 
 <form id="form">
 <label for="states"><center>Choose a State:</center></label>
-<div class="custom-select" style="width: 200px;">
+<div class="custom-select" style="width: 350px;">
 <select id="state" name="states">
   <option value="AN">Andaman and Nicobar Islands</option>
   <option value="AP">Andhra Pradesh</option>
@@ -79,7 +72,7 @@
   <option value="SK">Sikkim</option>
   <option value="TG">Telangana</option>
   <option value="TN">Tamil Nadu</option>
-  <option value="TR">Tripura</option>
+  <option value="TR" selected>Tripura</option>
   <!--<option value="TT">Audi TT</option>-->
   <option value="UP">Uttar Pradesh</option>
   <option value="UT">Uttarakhand</option>
@@ -91,18 +84,23 @@
 
 <script type="text/javaScript" src="custom-select.js"></script>
 
-<button onclick = "urlcheck()">click me</button>
+<center><button onclick = "urlcheck()">click me</button></center>
 
 <p id = "demo"><p>
 
-<center><p id = "table_info"></p></center>
+<center>
+      <p id = "table_info"></p>  
+</center>
 
 <!--body-->
 
 
+<div class="floating-action-button"><a href = "https://selfregistration.cowin.gov.in/"><img src="covid19logo.jpg" height="70" width="210"></a></div>	
+
 <hr>
+  
 <footer>
-<center>Made with Insomnia at AGARTALA by Gintama Fans!</center>
+Made with Insomnia at AGARTALA by Gintama Fans!
 </footer>
 
 </body>

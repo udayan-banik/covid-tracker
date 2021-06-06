@@ -8,87 +8,109 @@
 
 <meta http-equiv="refresh" content="300">
 
+<meta name="google-site-verification" content="8oASomEqLsN-RY6sAzk7ADWJYPousD8w1NEBmy638e4" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 <meta name="title" content="CoWin UdaySagar">
 	
 <meta name="description" content="A Cowin Vaccine Tracker made for India using the Cowin Open API availed through APISetu">
 	
-<meta name="keywords" content="cowin udaysagar, udayan banik, cowin vaccine tracker, tripura, covid-19, tripura covid vaccine, korona, carona, curuna, pandemic, india, corona, covid19india, tripura corona">
+<meta name="keywords" content="tripura, covid-19, xixix, senpai covid, sen-pai">
+	
+<link rel="stylesheet" href="./index-styles.css">
+
+<link rel="stylesheet" href="./stat-styles.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5869KKGKT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M5869KKGKT');
+</script>	
 
 <script src = "./script.js"></script>
 
-<style>
-.c { 
-text-align: center; 
-font-size: 20px; 
-padding: 75px;
-}
+<script src="./custom-select.js"></script>
 
-.d {
-text-align: center;
-}
+<script src="./statscheck.js"></script>
 
-.p {
-text-align: auto;
-}
-
-th, td {
-  text-align: center;
-}
-
-#table_info {
-  width: 100%;
-  margin: 50px auto;
-}
-
-</style>
 
 </head>
 
 
 <body>
-	<center><h1>Cowin Vaccine Tracker</h1></center>
+	
+
+  <div class="topnav" id="myTopnav">
+    <a href="./index.html" class="active">Home</a>
+    <a href="./stat.html">Stats</a>
+    <a href="#contact">Contact</a>
+    <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a>
+    <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+    
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <center><h1>Cowin Vaccine Tracker</h1></center>
 
 	
-<form id="form" class = "c">
-
-<label for="pin"> Enter pincode:</label><br>
-  <input type="text" id="pin" placeholder="Enter your PINCODE" class = "d"><br>
-
-<label for="date-input">Enter date</label><br>
- <input type="date" id="date-input" class="d"><br>
-
-<label for="age"> Enter age:</label><br>
-  <input type="radio" id="age1" name="age" value="18" class = "d"><label for="age">18 - 44</label><br>
-  <input type="radio" id="age2" name="age" value="45" class = "d"><label for="age">45+</label><br>
-
-<label for="dose"> Enter dose:</label><br>
-  <input type="radio" id="dose1" name="dose" value="1" class = "d"><label for="age">Dose 1</label><br>
-  <input type="radio" id="dose2" name="dose" value="2" class = "d"><label for="age">Dose 2</label><br>
-
-</form>
-
-
-<center><button onclick = "gJ()">Check Now</button></center>
-
-
-<center><h2>Stats</h2></center>
-
-<p id = "demo"><p>
 	
-<center><table id = "table_info"></table></center>	
-	
+	<!-- <button class="my-btn-left"><a href="./stat.html">Covid-19 Statistics</a></button> -->
+<center><div class="card">	
+
+  <form id="form">
+
+    <label for="pin"> Enter pincode:</label><br>
+      <input type="text" id="pin" placeholder="Enter your PINCODE" class = "d"><br>
+
+    <label for="date-input">Enter date</label><br>
+    <input type="date" id="date-input" class="d"><br>
+
+    <label for="age"> Enter age:</label><br>
+      <input type="radio" id="age1" name="age" value="18" class = "d"><label for="age">18 - 44</label><br>
+      <input type="radio" id="age2" name="age" value="45" class = "d"><label for="age">45+</label><br>
+
+    <label for="dose"> Enter dose:</label><br>
+      <input type="radio" id="dose1" name="dose" value="1" class = "d"><label for="age">Dose 1</label><br>
+      <input type="radio" id="dose2" name="dose" value="2" class = "d"><label for="age">Dose 2</label><br>
+
+  </form>
+
+  <button onclick = "gJ()">Check Now</button>
+
+</div></center>
+
+
+
+<div class="card">
+
+  <h2>Stats</h2>
+
+  
+  <p id = "demo"></p>
+  
+</div>
 	
 <center><h3>Slots Available?</h3></center>
-<div class="c"><center><a href = "https://selfregistration.cowin.gov.in/">Click Me to Fast Register</a></center></div>	
+<div class="floating-action-button"><a href = "https://selfregistration.cowin.gov.in/"><img src="covid19logo.jpg" height="70" width="210"></a></div>	
 
 
 
 
 <hr>
+
 <footer>
-<center>Made with Insomnia at AGARTALA by Gintama Fans!</center>
+Made with Insomnia at AGARTALA by Gintama Fans!
 </footer>
+
 </body>
+
 </html>
