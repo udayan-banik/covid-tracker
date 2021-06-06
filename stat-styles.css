@@ -147,3 +147,27 @@ hr, footer{
 a {
   text-decoration: none;
 }
+
+body {
+  background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: soothing 8s linear alternate infinite;
+}
+
+@keyframes soothing {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 25% 25%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 75% 75%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
