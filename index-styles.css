@@ -24,22 +24,7 @@
       width: 100vw;
       margin: auto;
       text-align: center;
-  }
-            
-  @media (prefers-color-scheme: dark) {
-        .dark-mode{
-            background-color: #383742;
-            color: white;}	
-        
-    }
-
-  @media (prefers-color-scheme: light) {
-        body {
-          background-color: white;
-          color: black;
-        }
-  }
-        
+  }     
         
   .my-btn-left {
         
@@ -68,7 +53,7 @@
 
   input[type=text], input[type=date] {
     width: 40%;
-    height: 0.8%%;
+    height: .8%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 40px;
@@ -86,13 +71,12 @@
  
    font-size: 15px;
    color: white;
-   text-align: center;
-   line-height: 70px;
+   /* text-align: right; */
+   /* line-height: 70px; */
  
    position: fixed;
-   /* float: right; */
-   right: 50px;
-   bottom: 50px;
+   right: 10px;
+   bottom: 25px;
   }
 
   .floating-action-button:hover {
@@ -105,6 +89,7 @@
     overflow-x: auto;
   }
 
+  /* linear gradient body background added */
   body {
     background: linear-gradient(-45deg, #23a6d5, #23d5ab);
     background-size: 400% 400%;
@@ -126,6 +111,23 @@
     }
     100% {
       background-position: 100% 100%;
+    }
+  }
+
+ /* resized cowin icon for small screens */
+  @media screen and (max-width: 600px) {
+    .floating-action-button {
+      position: fixed;
+      right: 1vw;
+      bottom: 3vh;
+      width: 120px;
+      height: 40px;
+    }
+
+    .floating-action-button img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
   }
 
