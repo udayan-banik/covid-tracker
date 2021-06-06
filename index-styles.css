@@ -21,24 +21,10 @@
   }
     
   #table_info {
-      width: 100%;
+      width: 100vw;
       margin: auto;
-  }
-            
-  @media (prefers-color-scheme: dark) {
-        .dark-mode{
-            background-color: #383742;
-            color: white;}	
-        
-    }
-
-  @media (prefers-color-scheme: light) {
-        body {
-          background-color: white;
-          color: black;
-        }
-  }
-        
+      text-align: center;
+  }     
         
   .my-btn-left {
         
@@ -55,28 +41,29 @@
 
   
   .card {
+    text-align: center;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 100%;
+    width: 100vw;
     border-radius: 5px;
-    padding: 25px;
+    padding: 0px;
+    padding-top: 10px;
   }
 
   input[type=text], input[type=date] {
     width: 40%;
-    height: 0.8%%;
+    height: .8%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 40px;
     resize: vertical;
   }
 
   .floating-action-button {
-    width: 70px;
-   height: 35px;
-   min-width: 20%;
-   max-width: 40%;
+    width: 210px;
+   height: 70px;
+   font-size: 3rem;
    /* background-color: rgb(0, 255, 242); */
    /* border-radius: 10%; */
    box-shadow: 0 5px 11px 4px #666;
@@ -84,13 +71,12 @@
  
    font-size: 15px;
    color: white;
-   text-align: center;
-   line-height: 70px;
+   /* text-align: right; */
+   /* line-height: 70px; */
  
-   /* position: fixed; */
-   float: right;
-   right: 50px;
-   bottom: 50px;
+   position: fixed;
+   right: 10px;
+   bottom: 25px;
   }
 
   .floating-action-button:hover {
@@ -98,10 +84,51 @@
    transform: scale(1.05);
   }
 
-  img {
-     height: 35px;
-     width: 100%;
-     padding: auto;
+  #demo {
+    width: 100vw;
+    overflow-x: auto;
+  }
+
+  /* linear gradient body background added */
+  body {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: soothing 8s linear alternate infinite;
+  }
+
+  @keyframes soothing {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 25% 25%;
+    }
+    50% {
+      background-position: 50% 50%;
+    }
+    50% {
+      background-position: 75% 75%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+ /* resized cowin icon for small screens */
+  @media screen and (max-width: 600px) {
+    .floating-action-button {
+      position: fixed;
+      right: 1vw;
+      bottom: 3vh;
+      width: 120px;
+      height: 40px;
+    }
+
+    .floating-action-button img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   
