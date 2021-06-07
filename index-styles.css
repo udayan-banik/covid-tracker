@@ -1,3 +1,4 @@
+
   .c { 
     text-align: center; 
     font-size: 20px; 
@@ -47,6 +48,7 @@
     transition: 0.3s;
     width: 100vw;
     border-radius: 5px;
+    padding: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -74,9 +76,8 @@
    /* text-align: right; */
    /* line-height: 70px; */
  
-   position: fixed;
-   right: 10px;
-   bottom: 25px;
+   position: relative;
+    margin: 1rem auto;
   }
 
   .floating-action-button:hover {
@@ -117,9 +118,8 @@
  /* resized cowin icon for small screens */
   @media screen and (max-width: 600px) {
     .floating-action-button {
-      position: fixed;
-      right: 1vw;
-      bottom: 3vh;
+      position: relative;
+      align-items: center;
       width: 120px;
       height: 40px;
     }
@@ -130,5 +130,3 @@
       height: 100%;
     }
   }
-
-  
