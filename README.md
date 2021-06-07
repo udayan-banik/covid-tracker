@@ -21,6 +21,6 @@ Hosted at https://udayan-banik.github.io/covid-tracker and https://sen-pai.codes
 13. ```git merge "new branch"``` merge the changes brought by you in the newly created branch to the main/master branch of your repository
 14. ```git push``` to add the new files from the new branch merged into your master branch to our repository
 15. Sometimes you may come across a ```Conflict``` 
-16. The conflict looks like this ```<<<``` new chnages ```====``` existing code ```>>>``` now delete what side you want to keep and delete the rest part and also delete the symbols <<< ==== >>>
+16. The conflict looks like this ```<<<``` new changes ```====``` existing code ```>>>``` now delete what side you want to keep and delete the rest part and also delete the symbols <<< ==== >>>
 17. Confirm the resolve by either clicking the ```resolve conflict``` on the web interface or by saving the file and repeating step 13 or 14 and then commit the changes and finally push to the repository!
 Hurray! You just did your first pull request to our repository!
