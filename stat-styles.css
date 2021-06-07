@@ -143,17 +143,29 @@ i.fa.fa-bars {
 }
 
 /* positioning the footer at the bottom of page */
-hr, footer{
-  
-  position: fixed;
-   left: 0;
-   bottom: 0;
+footer{
+  position: relative;
    width: 100%;
-   background-color: rgb(0, 255, 234);
+   background-color: rgba(255, 255, 255, .4);
    color: black;
    text-align: center;
+   margin-top: 13vh;
+   height: 2rem;
 }
 
 a {
   text-decoration: none;
+}
+
+#stats-cowin {
+  position: absolute;
+  align-items: center;
+  left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
+  transform: translateX(-50%); /* wrt element's own width move the element half way across right */
+  bottom: 2.5rem;
+}
+
+#stats-ft {
+  position: absolute;
+  bottom: 0;
 }
