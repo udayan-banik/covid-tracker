@@ -86,13 +86,15 @@ function createTable() {
 	hcell2.innerHTML = "<b>Recovered</b>";
 	hcell3.innerHTML = "<b>Tested</b>";
 	//hcell4.innerHTML = "<b>Block name</b>";
+	tbl.createTBody();
 
 	disp.appendChild(tbl);
 }
 
 function addRow(data, StateCode) {
 	var tbl = document.getElementById("table_info");
-	var trow = tbl.insertRow(-1);
+	var tbody = tbl.tBodies[0];
+	var trow = tbody.insertRow(-1);
 
 	var cell0 = trow.insertCell(0);
 	var cell1 = trow.insertCell(1);

@@ -127,7 +127,6 @@ getJSON(url, function(err, data){
 			disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";
 		}
 					
-	
     }
 
 
@@ -156,12 +155,16 @@ function createTable() {
 	hcell3.innerHTML = "<b>Address</b>";
 	hcell4.innerHTML = "<b>Block name</b>";
 
+	tbl.createTBody();
+	tbl.setAttribute("cellspacing", "5");
+
 	disp.appendChild(tbl);
 }
 
 function addRow(dose, data, iter1, iter2) {
 	var tbl = document.getElementById("table_info");
-	var trow = tbl.insertRow(-1);
+	var tbody = tbl.tBodies[0];
+	var trow = tbody.insertRow(-1);
 
 	var cell0 = trow.insertCell(0);
 	var cell1 = trow.insertCell(1);
