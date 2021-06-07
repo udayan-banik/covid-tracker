@@ -174,3 +174,24 @@ a {
   position: absolute;
   bottom: 0;
 }
+
+td {
+  border-radius: 3px;
+}
+
+tr {
+  background-color: #92f0d0;
+}
+
+thead tr {
+  background-color: rgb(198, 159, 207);
+  line-height: 2rem;
+}
+
+tr:hover {
+  background-color: #c9fdec;
+}
+
+thead tr:hover {
+  background-color: rgb(166, 114, 179);
+}
