@@ -56,6 +56,11 @@ i.fa.fa-bars {
   }
 }
 
+/* bright background for inputs */
+#date-input, #pin {
+  background-color: white;
+}
+
 .custom-select {
   position: relative;
   margin: 5px auto;
@@ -66,9 +71,15 @@ i.fa.fa-bars {
   display: none;
 }
 
+/* added rounded border around select-items */
 .select-selected {
   /* background-color: rgba(146, 224, 226, 0.74); */
   box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  border-radius: 5px;
+}
+
+.select-selected.select-arrow-active {
+  border-radius: 5px 5px 0 0;
 }
 
 /* Styling the arrow inside the select box with border color and no content */
@@ -80,7 +91,7 @@ i.fa.fa-bars {
   width: 0;
   height: 0;
   border: 6px solid; /* transparent;*/
-  border-color: #666 transparent transparent transparent;*/
+  border-color: #666 transparent transparent transparent;
 }
 
 /* reversing the arrow direction when selected */
@@ -92,10 +103,10 @@ i.fa.fa-bars {
 .select-items div, .select-selected {
   padding: 8px 16px;
   background-color: white;
-  /* border: 1px solid transparent; */
-  /* border-color: transparent transparent rgba(0, 0, 0, .5); */
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, .08);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   cursor: pointer;
   user-select: none;
 }
@@ -125,25 +136,36 @@ i.fa.fa-bars {
 
 .select-items div:hover, .same-as-selected {
   background-color: #AAA;
-  border-radius: 5px;
 }
 
 .select-items:last-child {
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 /* positioning the footer at the bottom of page */
-hr, footer{
-  
-  position: fixed;
-   left: 0;
-   bottom: 0;
+footer{
+  position: relative;
    width: 100%;
-   background-color: rgb(0, 255, 234);
+   background-color: rgba(255, 255, 255, .4);
    color: black;
    text-align: center;
+   margin-top: 13vh;
+   height: 2rem;
 }
 
 a {
   text-decoration: none;
+}
+
+#stats-cowin {
+  position: absolute;
+  align-items: center;
+  left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
+  transform: translateX(-50%); /* wrt element's own width move the element half way across right */
+  bottom: 2.5rem;
+}
+
+#stats-ft {
+  position: absolute;
+  bottom: 0;
 }
