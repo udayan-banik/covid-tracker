@@ -147,7 +147,7 @@ i.fa.fa-bars {
 
 /* positioning the footer at the bottom of page */
 footer {
-  margin-top: auto;
+  margin-top: 97vh;
    width: 100%;
    background-color: rgba(255, 255, 255, .4);
    color: black;
