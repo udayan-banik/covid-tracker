@@ -1,6 +1,5 @@
   *{
    font-family: Roboto, Archia, Helvetica;
-   font-size: 20px;
   }
 
 
@@ -160,4 +159,8 @@
     transform: scale(1.42);
     color:aliceblue;
     box-shadow:0 6px 14px 0 #666;
+  }
+
+  font-size-class {
+   font-size: 20px;
   }
