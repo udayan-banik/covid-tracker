@@ -133,3 +133,30 @@
       height: 100%;
     }
   }
+
+  input:focus { 
+    outline: none;
+  }
+
+  textarea:focus { 
+    outline: none;
+  }
+
+  button {
+    border-radius: 5px;
+    border-color: transparent;
+    background: linear-gradient(-45deg, #23a6d5,#7d0cda);
+    transition: ease-in;
+    transform: scale(1.25);
+    color:aliceblue
+  }
+
+  button:hover {
+    border-radius: 5px;
+    border-color: transparent;
+    background: linear-gradient(-45deg, #23a6d5,#7d0cda);
+    transition: ease-in;
+    transform: scale(1.42);
+    color:aliceblue;
+    box-shadow:0 6px 14px 0 #666;
+  }
