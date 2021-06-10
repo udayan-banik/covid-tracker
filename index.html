@@ -71,10 +71,10 @@
   <form id="form">
 
     <label for="pin"> Enter pincode:</label><br>
-      <input type="text" id="pin" placeholder="PINCODE" class = "d"><br>
+      <input type="text" id="pin" placeholder="Please enter a pincode" class = "d"><br>
 
     <label for="date-input">Enter date</label><br>
-    <input type="date" id="date-input" class="d"><br>
+    <input type="text" id="date-input" placeholder="Please specify a date" onfocus="(this.type='date')" onblur="(this.type='text')" class="d"><br>
 
     <label for="age"> Enter age:</label><br>
       <input type="radio" id="age1" name="age" value="18" class = "d"><label for="age">18 - 44</label><br>
@@ -86,7 +86,7 @@
 
   </form>
 
-  <button onclick = "gJ()">Check Now</button>
+  <button onclick = "gJ()">Search</button>
 
 </div></center>
 
