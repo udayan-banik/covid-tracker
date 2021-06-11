@@ -37,7 +37,7 @@
 
 <script src = "./script.js"></script>
 
-<script src="./custom-select.js"></script>
+<!-- <script src="./custom-select.js"></script> -->
 
 <script src="./statscheck.js"></script>
 
@@ -64,12 +64,18 @@
 	
 	
 	<!-- <button class="my-btn-left"><a href="./stat.html">Covid-19 Statistics</a></button> -->
-<center><div class="card">	
+<center><div class="card">
+  
+  <button onclick="toggleMethod()">toggle</button>
 
   <form id="form">
 
-    <label for="pin"> Enter pincode:</label><br>
-      <input type="text" id="pin" placeholder="PINCODE" class = "d"><br>
+    <select id="states" class="searchByDistrict" style="display: none;" onchange="loadDistricts()"></select>
+    
+    <select id="districts" class="searchByDistrict" style="display: none"></select><br>
+
+    <label for="pin" class="searchByPin"> Enter pincode:</label><br>
+      <input type="text" id="pin" placeholder="PINCODE" class = "d searchByPin"><br>
 
     <label for="date-input">Enter date</label><br>
     <input type="date" id="date-input" class="d"><br>
@@ -84,13 +90,15 @@
 
   </form>
 
-  <button onclick = "gJ()">Check Now</button>
+  <button class="searchByPin" onclick = "gJ()">Check Now</button>
+  <button class="searchByDistrict" style="display: none" onclick="getCenters()">check</button>
 
 </div></center>
 
+<div class="card searchByDistrict" id="pageContainer" style="display: none">
+</div>
 
-
-<div class="card">
+<div class="card searchByPin">
 
   <h2>Stats</h2>
 
@@ -98,6 +106,8 @@
   <p id = "demo"></p>
   
 </div>
+
+<script src="search-districts.js"></script>
 	
 <h3 style="text-align: center; padding-top: 1rem; padding-bottom: 1rem">
   To register directly, click the Co-WIN button
@@ -109,7 +119,6 @@
     <img src="covid19logo.jpg" height="70" width="210">
   </a>
 </div>	
-
 
 <footer>
 Made with Insomnia at AGARTALA by Gintama Fans!
