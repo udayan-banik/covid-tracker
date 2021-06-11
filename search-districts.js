@@ -144,7 +144,7 @@ function createPages(numEntries) {
     input.setAttribute("id", "pageIndex");
     input.setAttribute("onchange", "showSpecificPage()");
     input.style.float = "right";
-    input.style.width = "10vw";
+    input.style.width = "6rem";
     input.style.marginRight = "3vw";
     let numPages = Math.ceil(numEntries / entriesPerPage);
     if (numPages > 0)

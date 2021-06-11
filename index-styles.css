@@ -134,6 +134,10 @@
   text-align: center;
 }
 
+#pageContainer {
+  overflow-x: auto;
+}
+
 .tablePerPage {
   width: 100vw;
   margin: auto;
