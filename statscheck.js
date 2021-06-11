@@ -87,7 +87,7 @@ function createTable() {
 	hcell3.innerHTML = "<b>Tested</b>";
 	//hcell4.innerHTML = "<b>Block name</b>";
 	tbl.createTBody();
-
+	tbl.setAttribute("cellspacing","5");
 	disp.appendChild(tbl);
 }
 

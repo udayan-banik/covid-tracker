@@ -1,10 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
-<title>CoWin UdaySagar</title>
+<title>Code.Meds</title>
 
 <!--<script src="https://code.jquery.com/jquery-3.5.0.js"></script>-->
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta http-equiv="refresh" content="300">
 
@@ -12,11 +16,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	
-<meta name="title" content="CoWin UdaySagar">
+<meta name="title" content="Code.Meds">
 	
 <meta name="description" content="A Cowin Vaccine Tracker made for India using the Cowin Open API availed through APISetu">
 	
 <meta name="keywords" content="tripura, covid-19, xixix, senpai covid, sen-pai">
+	
+<link rel="icon" href="./vac.svg">	
 	
 <link rel="stylesheet" href="./index-styles.css">
 
@@ -49,10 +55,10 @@
 	
 
   <div class="topnav" id="myTopnav">
-    <a href="./index.html" class="active">Home</a>
+    <a href="./index.html" class="active"><img src="./vac.svg" height="20" width="auto" alt="Code.Meds Logo"></a>
     <a href="./stat.html">Stats</a>
     <a href="#contact">Contact</a>
-    <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a>
+    <!-- <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a> -->
     <a href="javascript:void(0)" class="icon" onclick="myFunction()">
     
       <i class="fa fa-bars"></i>
@@ -70,19 +76,20 @@
 
   <form id="form">
 
+
     <select id="states" class="searchByDistrict" style="display: none;" onchange="loadDistricts()"></select>
     
     <select id="districts" class="searchByDistrict" style="display: none"></select><br>
 
     <label for="pin" class="searchByPin"> Enter pincode:</label><br>
-      <input type="text" id="pin" placeholder="PINCODE" class = "d searchByPin"><br>
+      <input type="text" id="pin" placeholder="Please enter a pincode" class = "d searchByPin"><br>
 
     <label for="date-input">Enter date</label><br>
-    <input type="date" id="date-input" class="d"><br>
+    <input type="text" id="date-input" placeholder="Please specify a date" onfocus="(this.type='date')" onblur="(this.type='text')" class="d"><br>
 
     <label for="age"> Enter age:</label><br>
       <input type="radio" id="age1" name="age" value="18" class = "d"><label for="age">18 - 44</label><br>
-      <input type="radio" id="age2" name="age" value="45" class = "d"><label for="age">45+</label><br>
+      <input type="radio" id="age2" name="age" value="45" class = "d"><label for="age">45+    </label><br>
 
     <label for="dose"> Enter dose:</label><br>
       <input type="radio" id="dose1" name="dose" value="1" class = "d"><label for="age">Dose 1</label><br>
@@ -90,8 +97,10 @@
 
   </form>
 
-  <button class="searchByPin" onclick = "gJ()">Check Now</button>
-  <button class="searchByDistrict" style="display: none" onclick="getCenters()">check</button>
+
+  <button class="searchByPin" onclick ="gJ()">Search</button>
+  <button class="searchByDistrict" style="display: none" onclick="getCenters()">Search</button>
+
 
 </div></center>
 
@@ -116,7 +125,7 @@
 
 <div class="floating-action-button">
   <a href = "https://selfregistration.cowin.gov.in/">
-    <img src="covid19logo.jpg" height="70" width="210">
+    <img src="covid19logo.jpg" height="70" width="210" alt="CoWin Website Link">
   </a>
 </div>	
 
