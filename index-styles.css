@@ -134,6 +134,17 @@
     }
   }
 
+
+.page h1 {
+  text-align: center;
+}
+
+.tablePerPage {
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
   input:focus { 
     outline: none;
   }
@@ -164,3 +175,4 @@
   .font-size-class {
    font-size: 20px;
   }
+
