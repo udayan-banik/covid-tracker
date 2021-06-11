@@ -290,7 +290,7 @@ function addRow(dose, data, slno, pageNo) {
 		cell0.innerHTML = data.sessions[slno].available_capacity_dose1;
 	if(dose == 2)
 		cell0.innerHTML = data.sessions[slno].available_capacity_dose2;
-    cell0.innerHTML += data.sessions[slno].vaccine;
+    cell0.innerHTML += " " + data.sessions[slno].vaccine;
 	cell1.innerHTML = data.sessions[slno].date;
 	cell2.innerHTML = data.sessions[slno].name;
 	cell3.innerHTML = data.sessions[slno].address;
