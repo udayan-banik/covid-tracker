@@ -22,13 +22,19 @@
 	
 <meta name="keywords" content="tripura, covid-19, xixix, senpai covid, sen-pai">
 	
-<link rel="icon" href="./vac.svg">	
+<meta name="theme-color" content="#333"/>
+	
+<link rel="icon" href="./vac.svg">
+	
+<link rel="apple-touch-icon" href="icons/apple-icon-180.png">
 	
 <link rel="stylesheet" href="./index-styles.css">
 
 <link rel="stylesheet" href="./stat-styles.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<link rel="manifest" href="/manifest.json"/>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -132,6 +138,12 @@
 <footer>
 Made with Insomnia at AGARTALA by Gintama Fans!
 </footer>
+	
+<script>
+	if ('serviceWorker' in navigator) {
+    		navigator.serviceWorker.register('/service-worker.js');
+  	}
+</script>
 
 </body>
 
