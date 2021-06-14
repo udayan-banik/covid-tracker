@@ -127,6 +127,10 @@
       height: 40px;
     }
 
+    #stats-cowin {
+      bottom: 4rem;
+    }
+
     .floating-action-button img {
       position: absolute;
       width: 100%;
@@ -137,6 +141,10 @@
 
 .page h1 {
   text-align: center;
+}
+
+#pageContainer {
+  overflow-x: auto;
 }
 
 .tablePerPage {
