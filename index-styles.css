@@ -1,3 +1,8 @@
+  *{
+   font-family: Roboto, Archia, Helvetica;
+  }
+
+
   .c { 
     text-align: center; 
     font-size: 20px; 
@@ -58,7 +63,6 @@
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 40px;
-    resize: vertical;
   }
 
   .floating-action-button {
@@ -130,6 +134,7 @@
     }
   }
 
+
 .page h1 {
   text-align: center;
 }
@@ -143,3 +148,35 @@
   margin: auto;
   text-align: center;
 }
+
+  input:focus { 
+    outline: none;
+  }
+
+  textarea:focus { 
+    outline: none;
+  }
+
+  button {
+    border-radius: 5px;
+    border-color: transparent;
+    background: linear-gradient(-45deg, #23a6d5,#7d0cda);
+    transition: ease-in;
+    transform: scale(1.25);
+    color:aliceblue
+  }
+
+  button:hover {
+    border-radius: 5px;
+    border-color: transparent;
+    background: linear-gradient(-45deg, #23a6d5,#7d0cda);
+    transition: ease-in;
+    transform: scale(1.42);
+    color:aliceblue;
+    box-shadow:0 6px 14px 0 #666;
+  }
+
+  .font-size-class {
+   font-size: 20px;
+  }
+
