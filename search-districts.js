@@ -73,7 +73,7 @@ function listDistricts(data) {
         option.innerHTML = data.districts[i].district_name;
         option.value = data.districts[i].district_id;
         districtSelect.add(option);
-        if (data.districts[i].district_name == "Dhalai")
+        if (data.districts[i].district_name == "West Tripura")
             option.selected = true;
     }
     customSelect();
@@ -322,10 +322,10 @@ function customSelect() {
             container[ii].getElementsByClassName("select-selected")[0].remove();
         if (container[ii].getElementsByClassName("select-items").length > 0) 
             container[ii].getElementsByClassName("select-items")[0].remove(); 
-        console.log(container[ii]);
+        // console.log(container[ii]);
         var selectElement = container[ii].getElementsByTagName("select")[0];
         var numOptions = selectElement.length;
-        console.log(selectElement.selectedIndex);
+        // console.log(selectElement.selectedIndex);
 
         // create the selected div element
         var selectedSelect = document.createElement("div");

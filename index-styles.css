@@ -127,6 +127,10 @@
       height: 40px;
     }
 
+    #stats-cowin {
+      bottom: 4rem;
+    }
+
     .floating-action-button img {
       position: absolute;
       width: 100%;
