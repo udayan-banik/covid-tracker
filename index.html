@@ -83,9 +83,14 @@
   <form id="form">
 
 
-    <select id="states" class="searchByDistrict" style="display: none;" onchange="loadDistricts()"></select>
+    <br>
+    <div class="searchByDistrict custom-select" style="display: none; width: 320px;">
+    <select id="states" onchange="loadDistricts()"></select>
+    </div>
     
-    <select id="districts" class="searchByDistrict" style="display: none"></select><br>
+    <div class="searchByDistrict custom-select" style="display: none; width: 320px;">
+    <select id="districts"></select>
+    </div>
 
     <label for="pin" class="searchByPin"> Enter pincode:</label><br>
       <input type="text" id="pin" placeholder="Please enter a pincode" class = "d searchByPin"><br>
@@ -102,7 +107,6 @@
       <input type="radio" id="dose2" name="dose" value="2" class = "d"><label for="age">Dose 2</label><br>
 
   </form>
-
 
   <button class="searchByPin" onclick ="gJ()">Search</button>
   <button class="searchByDistrict" style="display: none" onclick="getCenters()">Search</button>

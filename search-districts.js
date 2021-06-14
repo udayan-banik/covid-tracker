@@ -39,7 +39,6 @@ function toggleMethod() {
             listStates(data);
         }
     });
-
 }
 
 // populate the states
@@ -77,6 +76,7 @@ function listDistricts(data) {
         if (data.districts[i].district_name == "Dhalai")
             option.selected = true;
     }
+    customSelect();
 }
 
 function loadDistricts() {
@@ -88,6 +88,7 @@ function loadDistricts() {
             // console.log(data);
             // console.log(data.districts.length);
             listDistricts(data);
+            customSelect();
         }
     });
 }
@@ -157,7 +158,7 @@ function createPages(numEntries) {
 
     for (let i=1; i<=numPages; i++) {
         let div = document.createElement('div');
-        div.innerHTML = "<br><h2>page " + i.toString() + "</h2>";
+        div.innerHTML = "<br><br><h2>page " + i.toString() + "</h2>";
         div.setAttribute("class", "page");
         div.classList.add("page");
         div.classList.add("searchByDistrict");
@@ -309,4 +310,65 @@ function availableCenters(data, age, dose) {
         }
     }
     return activeCenters;
+}
+
+function customSelect() {
+    var container = document.getElementsByClassName("custom-select");
+    var numContainer = container.length;
+    // console.log(container.length);
+
+    for (let ii=0; ii<numContainer; ii++) {
+        if (container[ii].getElementsByClassName("select-selected").length > 0)
+            container[ii].getElementsByClassName("select-selected")[0].remove();
+        if (container[ii].getElementsByClassName("select-items").length > 0) 
+            container[ii].getElementsByClassName("select-items")[0].remove(); 
+        console.log(container[ii]);
+        var selectElement = container[ii].getElementsByTagName("select")[0];
+        var numOptions = selectElement.length;
+        console.log(selectElement.selectedIndex);
+
+        // create the selected div element
+        var selectedSelect = document.createElement("div");
+        selectedSelect.setAttribute("class", "select-selected");
+        selectedSelect.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML;
+        container[ii].appendChild(selectedSelect);
+
+        var selectItems = document.createElement("div");
+        selectItems.setAttribute("class", "select-items select-hide");
+        var option;
+        // create the option list using divs
+        for (let i=0; i<numOptions; i++) {
+            option = document.createElement("div");
+            option.innerHTML = selectElement.options[i].innerHTML;
+            option.addEventListener("click", function(event) {
+                let selectEle = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                let OptionsCount = selectEle.length;
+                let selectedDiv = this.parentNode.previousSibling;
+                for (let j=0; j<OptionsCount; j++) {
+                    if (selectEle.options[j].innerHTML == this.innerHTML) {
+                        selectEle.selectedIndex = j;
+                        selectedDiv.innerHTML = this.innerHTML;
+                        let selectedInDiv = this.parentNode.getElementsByClassName("same-as-selected");
+                        for (let k=0; k<selectedInDiv.length; k++)
+                            selectedInDiv[k].removeAttribute("class");
+                        this.setAttribute("class", "same-as-selected");
+                        if (this.parentNode.parentNode.getElementsByTagName("select")[0] == document.getElementById("states"))
+                            loadDistricts();
+                        break;
+                    }
+                }
+                selectedDiv.click();
+            });
+            selectItems.appendChild(option);
+        }
+        container[ii].appendChild(selectItems);
+        selectedSelect.addEventListener("click", function(event) {
+            event.stopPropagation();
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+    let distDiv = container[1].getElementsByClassName("select-items")[0];
+    if (distDiv.children.length < 14)
+        distDiv.style.height = "auto";
 }
