@@ -126,14 +126,18 @@ function getCenters () {
             createPages(numEntries);
             fillPages(data, age, dose, numEntries);
 
-            let btn = document.createElement("button");
-            btn.innerHTML = "<";
-            btn.addEventListener("click", previousPage);
-            container.appendChild(btn);
-            btn = document.createElement("button");
-            btn.innerHTML = ">";
-            btn.addEventListener("click", nextPage);
-            container.appendChild(btn);
+            if (numEntries > 0) {
+                let btn = document.createElement("button");
+                btn.innerHTML = "<";
+                btn.addEventListener("click", previousPage);
+                container.appendChild(btn);
+                btn = document.createElement("button");
+                btn.innerHTML = ">";
+                btn.addEventListener("click", nextPage);
+                container.appendChild(btn);
+            } else {
+                container.innerHTML += "<br><br><h3>No vaccination center available</h3>";
+            }
         }
     });
 }
@@ -156,17 +160,19 @@ function createPages(numEntries) {
     container.appendChild(input);
     
 
-    for (let i=1; i<=numPages; i++) {
-        let div = document.createElement('div');
-        div.innerHTML = "<br><br><h2>page " + i.toString() + "</h2>";
-        div.setAttribute("class", "page");
-        div.classList.add("page");
-        div.classList.add("searchByDistrict");
-        div.style.display = "none";
-        container.appendChild(div);
-    }
+        for (let i=1; i<=numPages; i++) {
+            let div = document.createElement('div');
+            div.innerHTML = "<br><br><h2>page " + i.toString() + "</h2>";
+            div.setAttribute("class", "page");
+            div.classList.add("page");
+            div.classList.add("searchByDistrict");
+            div.style.display = "none";
+            container.appendChild(div);
+        }
 
-    document.getElementsByClassName("page")[0].style.display = "block";
+        if (numPages > 0)
+            document.getElementsByClassName("page")[0].style.display = "block";
+
 }
 
 function clearPages() {

@@ -86,22 +86,35 @@ getJSON(url, function(err, data){
 
 		// boolean to check vaccine availability
 		var isAvailable = false;
-		if(data.centers.length > 0) {
+		if(dose == 1) {
 			for (let i=0; i<data.centers.length; i++) {
 				for (let j=0; j<data.centers[i].sessions.length; j++) {
-					if(data.centers[i].sessions[j].min_age_limit == age && data.centers[i].sessions[j].available_capacity > 0) {
+					if(data.centers[i].sessions[j].min_age_limit == age && data.centers[i].sessions[j].available_capacity_dose1 > 0) {
 						isAvailable = true;
-					}
-
-					if(isAvailable)
 						break;
+					}
 				}
-				if(isAvailable)
+				if(isAvailable == true)
 					break;
 			}
 		}
+
+		if(dose == 2) {
+			for (let i=0; i<data.centers.length; i++) {
+				for (let j=0; j<data.centers[i].sessions.length; j++) {
+					if(data.centers[i].sessions[j].min_age_limit == age && data.centers[i].sessions[j].available_capacity_dose2 > 0) {
+						isAvailable = true;
+						break;
+					}
+				}
+				if(isAvailable == true)
+					break;
+			}
+		}
+
+
 		
-		if(isAvailable) {
+		if(isAvailable == true) {
 			createTable();
 		
 
@@ -111,7 +124,7 @@ getJSON(url, function(err, data){
 					
 					
 					
-					if(data.centers[iter1].sessions[iter2].available_capacity >= 0 /*>>0*/ && data.centers[iter1].sessions[iter2].min_age_limit == age){
+					if(data.centers[iter1].sessions[iter2].available_capacity > 0 && data.centers[iter1].sessions[iter2].min_age_limit == age){
 						/*console.log(iter3);*/
 						if(dose == 1){
 							addRow(dose, data, iter1, iter2);
@@ -124,7 +137,7 @@ getJSON(url, function(err, data){
 					/*dont remove used for indent maintenance*/}
 			
 		} else {
-			disp.innerHTML = "<center>" + "No vaccination center available" + "</center>";
+			disp.innerHTML = "<h3>No vaccination center available</h3>";
 		}
 					
     }
@@ -176,6 +189,7 @@ function addRow(dose, data, iter1, iter2) {
 		cell0.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose1;
 	if(dose == 2)
 		cell0.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose2;
+	cell0.innerHTML += " " + data.centers[iter1].sessions[iter2].vaccine;
 	cell1.innerHTML = data.centers[iter1].sessions[iter2].date;
 	cell2.innerHTML = data.centers[iter1].name;
 	cell3.innerHTML = data.centers[iter1].address;
