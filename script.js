@@ -37,7 +37,7 @@ disp.innerHTML = "";
 *******Console Output Header********
 //////////////////////////////////*/
 
-console.log("For pin-"+pin+" 7 Days from "+ dateString +" Age: "+age+" Dose: "+dose);
+// console.log("For pin-"+pin+" 7 Days from "+ dateString +" Age: "+age+" Dose: "+dose);
 
 
 /******************Test Parts**********************/
@@ -190,11 +190,20 @@ function addRow(dose, data, iter1, iter2) {
 	if(dose == 2)
 		cell0.innerHTML = data.centers[iter1].sessions[iter2].available_capacity_dose2;
 	cell0.innerHTML += " " + data.centers[iter1].sessions[iter2].vaccine;
+	if (data.centers[iter1].fee_type == "Paid")
+		cell0.innerHTML += " (Rs." + feeOfVaccine(data.centers[iter1].sessions[iter2].vaccine, data.centers[iter1].vaccine_fees) + ")";
 	cell1.innerHTML = data.centers[iter1].sessions[iter2].date;
 	cell2.innerHTML = data.centers[iter1].name;
 	cell3.innerHTML = data.centers[iter1].address;
 	cell4.innerHTML = data.centers[iter1].block_name;
 
+}
+
+function feeOfVaccine(vaccine, vaccine_fees) {
+	for (let i=0; i<vaccine_fees.length; i++) {
+		if (vaccine == vaccine_fees[i].vaccine)
+			return vaccine_fees[i].fee;
+	}
 }
 
 /*####################################################
