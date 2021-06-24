@@ -379,4 +379,7 @@ function customSelect() {
     let distDiv = container[1].getElementsByClassName("select-items")[0];
     if (distDiv.children.length < 14)
         distDiv.style.height = "auto";
+
+    let stateDiv = container[0].getElementsByClassName("select-items")[0];
+    stateDiv.style.zIndex = "110";
 }
