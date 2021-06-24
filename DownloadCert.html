@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Code.meds</title>
+    <link rel="stylesheet" href="./index-styles.css">
+    <link rel="stylesheet" href="./stat-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<body>
+    <!-- Topnav -->
+    <div class="topnav" id="myTopnav">
+        <a href="./index.html"><img src="./vac.svg" height="20" width="auto" alt="Code.Meds Logo"></a>
+        <a href="./stat.html">Stats</a>
+        <a href="./DownloadCert.html" class="active">Download Certificate</a>
+        <!-- <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a> -->
+        <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+        
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+
+
+
+    <!-- <form id="form"> -->
+  
+        <label for="mobile"> Enter mobile number:</label><br>
+            <input type="text" id="mobilenumber" value="9876543210" placeholder="Please enter a valid mobile number" class = "d"><br>
+        <button onclick="generateOTP()">Get OTP</button><br>
+    
+        <label for="otp">Enter OTP:</label><br>
+            <input type="text" id="otp" value="000000" placeholder="Please enter a valid OTP" class="d"><br>
+        <button onclick="confirmOTP()" id="my-btn-1">Confirm OTP</button><br>
+
+        <label for="otp">Enter Reference ID:</label><br>
+            <input type="text" id="ref_id" value="000000" placeholder="Please enter 16 digit ID" class="d"><br>
+        <button onclick="generateCertificate()" id="my-btn-2">Get Certificate</button><br>
+
+    <!-- </form> -->
+    <script src="./downloadCert.js"></script>
+    <p id="hurr"></p>
+</body>
+
+</html>
