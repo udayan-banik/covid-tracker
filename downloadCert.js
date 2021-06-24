@@ -3,8 +3,14 @@ var info_input = document.getElementsByTagName("input");
 // var mobile_num = info_input.elements.mobilenumber.value;
 // var otp = info_input.elements.otp.value;
 // var ref_id = info_input.elements.ref_id.value;
-var btn_1 = document.getElementById("my-btn-1").disabled = true;
-var btn_2 = document.getElementById("my-btn-2").disabled = true;
+var btn_1 = document.getElementById("my-btn-1");
+var btn_2 = document.getElementById("my-btn-2");
+
+var otpGenerated = false;
+var otpConfirmed = false;
+
+btn_1.disabled = true;
+btn_2.disabled = true;
 
 var params = {"mobile": "9876543210"};
 
@@ -22,7 +28,7 @@ function generateOTP() {
 
     params.mobile = mobile_num;
 
-    console.log(params.mobile);
+    console.log(JSON.stringify(params));
     
     // Generate OTP
     var xhttp = new XMLHttpRequest();
@@ -32,17 +38,21 @@ function generateOTP() {
     xhttp.onload = function() {
          console.log(xhttp.response);
          if (xhttp.status === 200) {
-            console.log("Hoise re");
-            console.log(xhttp.response.txnId);
+            // console.log("Hoise re");
+            // console.log(xhttp.response.txnId);
             confirmation.txnId = xhttp.response.txnId;
-            console.log(confirmation.txnId);
+            // console.log(confirmation.txnId);
+            btn_1.disabled = false;
+
          }
-         else
-             console.log("someting went wrong " + xhttp.status);
+         else if (xhttp.status === 400) {
+             alert("OTP already sent");
+         } else {
+             alert("Something went wrong");
+         }
     };
     xhttp.send(JSON.stringify(params));
 
-    btn_1 = false;
 }
 
 async function confirmOTP() {
@@ -69,18 +79,20 @@ async function confirmOTP() {
     xhr.open("POST", "https://cdn-api.co-vin.in/api/v2/auth/public/confirmOTP", true);
     xhr.setRequestHeader("content-type", "application/json;charset=UTF-8");
     xhr.responseType = 'json';
-    xhr.onload = function() {console.log(xhr.response);
+    xhr.onload = function() {
+        console.log(xhr.response);
         if (xhr.status === 200) {
             console.log("Hoise re");
             console.log(xhr.response.token);
             bearerToken.token = xhr.response.token;
             console.log(bearerToken.token);
+            btn_2.disabled = false;
         }
         else
-            console.log("someting went wrong " + xhr.status);};
+            alert("something went wrong");
+        };
     xhr.send(JSON.stringify(confirmation));
 
-    btn_2 = false;
 }
 
 function generateCertificate() {
@@ -93,13 +105,17 @@ function generateCertificate() {
     req.responseType = "arraybuffer";
     req.onload = function() {
         console.log(req.response);
-        var blob = [];
-        blob.push(req.response);
-        var link = document.createElement("a");
-        link.href = window.URL.createObjectURL(new File(blob, {type: "application/pdf"}));
-        link.download = "certificate" + new Date().getTime() + ".pdf";
-        document.body.appendChild(link);
-        link.click();
-    }
+        if (req.status === 200) {
+            var blob = [];
+            blob.push(req.response);
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(new File(blob, {type: "application/pdf"}));
+            link.download = "certificate" + new Date().getTime() + ".pdf";
+            document.body.appendChild(link);
+            link.click();
+        } else {
+            alert("something went wrong");
+        }
+    };
     req.send();
 }
