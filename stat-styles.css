@@ -176,7 +176,7 @@ a {
 
 #stats-ft {
   position: absolute;
-  bottom: 0;
+  top: 100vh;
 }
 
 td {
