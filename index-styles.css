@@ -65,6 +65,10 @@
     border-radius: 40px;
   }
 
+  button.searchByDistrict, button.searchByPin {
+    margin: .5rem auto;
+  }
+
   .floating-action-button {
     width: 210px;
    height: 70px;
@@ -145,6 +149,11 @@
 
 #pageContainer {
   overflow-x: auto;
+}
+
+#pageContainer button {
+  font-size: 1.3rem;
+  margin: .5rem 1.5rem;
 }
 
 .tablePerPage {
