@@ -170,7 +170,7 @@
     color:aliceblue
   }
 
-  button:hover {
+  button:hover:not([disabled]) {
     border-radius: 5px;
     border-color: transparent;
     background: linear-gradient(-45deg, #23a6d5,#7d0cda);
@@ -178,6 +178,16 @@
     transform: scale(1.42);
     color:aliceblue;
     box-shadow:0 6px 14px 0 #666;
+  }
+
+  button:disabled,
+  button[disabled]{
+    border-radius: 5px;
+    border-color: transparent;
+    background: linear-gradient(-45deg, #df5583,#eb2626);
+    transition: ease-in;
+    transform: scale(1.25);
+    color:aliceblue
   }
 
   .font-size-class {
