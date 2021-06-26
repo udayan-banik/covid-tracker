@@ -190,6 +190,10 @@
     color:aliceblue
   }
 
+  button:hover:disabled {
+   cursor: not-allowed;
+  }
+
   .font-size-class {
    font-size: 20px;
   }
