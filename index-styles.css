@@ -191,7 +191,7 @@
   }
 
   button:hover:disabled {
-   cursor: not-allowed;
+   cursor: not-allowed !important;
   }
 
   .font-size-class {
