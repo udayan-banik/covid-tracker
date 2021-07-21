@@ -110,7 +110,7 @@ function generateCertificate() {
             blob.push(req.response);
             var link = document.createElement("a");
             link.href = window.URL.createObjectURL(new File(blob, {type: "application/pdf"}));
-            link.download = "certificate" + new Date().getTime() + ".pdf";
+            link.download = "certificate" /*+ new Date().getTime()*/ + ".pdf";
             document.body.appendChild(link);
             link.click();
         } else {
