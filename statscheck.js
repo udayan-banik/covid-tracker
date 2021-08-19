@@ -16,7 +16,7 @@ var StateCode = getty.elements.state.value;
 
 
 var url1 = "https://api.covid19india.org/v4/min/timeseries.min.json";
-var url = "https://api.covid19india.org/v4/min/data.min.json";
+var url = "https://data.covid19india.org/v4/min/data.min.json";
 var url3 = "https://api.covid19india.org/v4/min/data-all.min.json";
 
 //var url = "https://api.covid19india.org/v4/min/"++".json";
