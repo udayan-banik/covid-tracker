@@ -1,8 +1,8 @@
 body {
-  margin:0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  min-height:100vh;
+  min-height: 100vh;
 }
 
 .topnav {
@@ -27,7 +27,7 @@ body {
 }
 
 .topnav a.active {
-  background-color: #0488AA;
+  background-color: #0488aa;
   color: white;
 }
 
@@ -40,7 +40,9 @@ i.fa.fa-bars {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
+  .topnav a:not(:first-child) {
+    display: none;
+  }
   .topnav a.icon {
     display: block;
     float: right;
@@ -48,7 +50,9 @@ i.fa.fa-bars {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive a.icon {
     position: absolute; /* positions relative to closest wraping element*/
     right: 0;
@@ -62,7 +66,8 @@ i.fa.fa-bars {
 }
 
 /* bright background for inputs */
-#date-input, #pin {
+#date-input,
+#pin {
   background-color: white;
 }
 
@@ -105,11 +110,12 @@ i.fa.fa-bars {
   top: 7px;
 }
 
-.select-items div, .select-selected {
+.select-items div,
+.select-selected {
   padding: 8px 16px;
   background-color: white;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, .08);
+  border-color: transparent transparent rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   /* border-radius: 5px; */
   cursor: pointer;
@@ -127,7 +133,7 @@ i.fa.fa-bars {
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
-  box-shadow:0 2px 2px rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
   z-index: 99;
 }
 
@@ -139,8 +145,9 @@ i.fa.fa-bars {
   color: white;
 }
 
-.select-items div:hover, .same-as-selected {
-  background-color: #AAA;
+.select-items div:hover,
+.same-as-selected {
+  background-color: #aaa;
 }
 
 .select-items {
@@ -149,12 +156,12 @@ i.fa.fa-bars {
 
 /* positioning the footer at the bottom of page */
 footer {
-   width: 100vw;
-   background-color: rgba(255, 255, 255, .4);
-   color: black;
-   text-align: center;
-   margin-top: 13vh;
-   line-height: 2rem;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+  text-align: center;
+  margin-top: 13vh;
+  line-height: 2rem;
 }
 
 a {
@@ -165,7 +172,9 @@ a {
   position: absolute;
   align-items: center;
   left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
-  transform: translateX(-50%);/* wrt element's own width move the element half way across right */
+  transform: translateX(
+    -50%
+  ); /* wrt element's own width move the element half way across right */
   bottom: 2.5rem;
 }
 
@@ -184,18 +193,136 @@ td {
 }
 
 tr {
-  background-color: #92f0d0;
+  /* background-color: #92f0d0; */
+  /* background-color: whitesmoke; */
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(2rem);
 }
 
 thead tr {
-  background-color: rgb(198, 159, 207);
+  /* background-color: #c69fcf; */
+  /* background-color: whitesmoke; */
   line-height: 2rem;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(2rem);
 }
 
-tr:hover {
+/* tr:hover {
   background-color: #c9fdec;
 }
 
 thead tr:hover {
   background-color: rgb(166, 114, 179);
+} */
+
+thead tr td {
+  border-style: solid;
+  border-width: 2px;
+}
+
+thead tr td:nth-child(1) {
+  /* border-color: rgb(232, 26, 63); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(232, 26, 63, 0.7),
+    rgba(232, 26, 63, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(2) {
+  /* border-color: rgb(97, 131, 141); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(97, 131, 141, 0.7),
+    rgba(97, 131, 141, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(3) {
+  /* border-color: rgb(26, 232, 133); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(26, 232, 133, 0.7),
+    rgba(26, 232, 133, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(4) {
+  /* border-color: rgb(241, 130, 82); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 130, 82, 0.7),
+    rgba(241, 130, 82, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(5) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 188, 0.7),
+    rgba(241, 82, 188, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(6) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.7),
+    rgba(241, 82, 232, 0.2)
+  );
+  backdrop-filter: blur(2rem);
+}
+
+/* hover */
+
+thead tr td:nth-child(1):hover {
+  background-color: rgb(232, 26, 63, 0.2);
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(2):hover {
+  background-color: rgba(97, 131, 141, 0.2);
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(3):hover {
+  background-color: rgba(26, 232, 133, 0.2);
+  backdrop-filter: blur(2rem);
+  box-shadow: 1px 5px 3px 0 rgb (20, 179, 102);
+}
+
+thead tr td:nth-child(4):hover {
+  background-color: rgb(241, 130, 82, 0.2);
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(5):hover {
+  background-color: rgb(241, 82, 232, 0.2);
+  backdrop-filter: blur(2rem);
+}
+
+thead tr td:nth-child(6):hover {
+  background-color: rgb(241, 82, 232, 0.2);
+  backdrop-filter: blur(2rem);
 }
