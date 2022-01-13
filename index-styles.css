@@ -44,7 +44,7 @@ a {
 .card {
   text-align: center;
   box-sizing: border-box;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   transition: 0.3s;
   width: 100vw;
   border-radius: 5px;
@@ -177,7 +177,7 @@ button {
   color: aliceblue;
 }
 
-button:hover:not([disabled]) {
+.bttn:hover:not([disabled]) {
   border-radius: 5px;
   border-color: transparent;
   background: linear-gradient(-45deg, #23a6d5, #7d0cda);
@@ -187,8 +187,8 @@ button:hover:not([disabled]) {
   box-shadow: 0 6px 14px 0 #666;
 }
 
-button:disabled,
-button[disabled] {
+.bttn:disabled,
+.bttn[disabled] {
   border-radius: 5px;
   border-color: transparent;
   background: linear-gradient(-45deg, #df5583, #eb2626);
@@ -197,10 +197,17 @@ button[disabled] {
   color: aliceblue;
 }
 
-button:hover:disabled {
+.bttn:hover:disabled {
   cursor: not-allowed !important;
 }
 
 .font-size-class {
   font-size: 20px;
+}
+
+.method_buttons,
+.method_buttons:hover {
+  margin: 0 1rem;
+  background: transparent;
+  border-radius: 0;
 }

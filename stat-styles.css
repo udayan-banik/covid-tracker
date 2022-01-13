@@ -194,10 +194,10 @@ a {
   text-align: center;
 }
 
-#stats_table td {
+#stats_table tbody tr td {
   border-radius: 3px;
-  font-weight: bolder;
-  /* height: 15rem; */
+  /* font-weight: bolder; */
+  padding: 1.5rem;
 }
 
 tr {
@@ -302,7 +302,7 @@ thead tr td:nth-child(6) {
   /* backdrop-filter: blur(2rem); */
 }
 
-hover thead tr td:nth-child(1):hover {
+thead tr td:nth-child(1):hover {
   background: linear-gradient(
     to right bottom,
     rgb(232, 26, 63, 0.2),

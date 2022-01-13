@@ -123,7 +123,7 @@ function urlcheck() {
   }
 
   function addRow(data, StateCode) {
-    var tbl = document.getElementById("table_info");
+    var tbl = document.getElementById("stats_table");
     var tbody = tbl.tBodies[0];
     var trow = tbody.insertRow(-1);
 
