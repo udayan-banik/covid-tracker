@@ -200,7 +200,7 @@ tr {
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr {
@@ -212,7 +212,7 @@ thead tr {
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 /* tr:hover {
@@ -236,7 +236,7 @@ thead tr td:nth-child(1) {
     rgba(232, 26, 63, 0.7),
     rgba(232, 26, 63, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(2) {
@@ -247,7 +247,7 @@ thead tr td:nth-child(2) {
     rgba(97, 131, 141, 0.7),
     rgba(97, 131, 141, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(3) {
@@ -258,7 +258,7 @@ thead tr td:nth-child(3) {
     rgba(26, 232, 133, 0.7),
     rgba(26, 232, 133, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(4) {
@@ -269,7 +269,7 @@ thead tr td:nth-child(4) {
     rgba(241, 130, 82, 0.7),
     rgba(241, 130, 82, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(5) {
@@ -280,7 +280,7 @@ thead tr td:nth-child(5) {
     rgba(241, 82, 188, 0.7),
     rgba(241, 82, 188, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(6) {
@@ -291,38 +291,38 @@ thead tr td:nth-child(6) {
     rgba(241, 82, 232, 0.7),
     rgba(241, 82, 232, 0.2)
   );
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 /* hover */
 
 thead tr td:nth-child(1):hover {
   background-color: rgb(232, 26, 63, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(2):hover {
   background-color: rgba(97, 131, 141, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(3):hover {
   background-color: rgba(26, 232, 133, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
   box-shadow: 1px 5px 3px 0 rgb (20, 179, 102);
 }
 
 thead tr td:nth-child(4):hover {
   background-color: rgb(241, 130, 82, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(5):hover {
   background-color: rgb(241, 82, 232, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(6):hover {
   background-color: rgb(241, 82, 232, 0.2);
-  backdrop-filter: blur(2rem);
+  /* backdrop-filter: blur(2rem); */
 }
