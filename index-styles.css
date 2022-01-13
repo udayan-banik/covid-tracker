@@ -97,10 +97,10 @@ button.searchByPin {
 
 /* linear gradient body background added */
 body {
-  background: linear-gradient(-45deg, #6acdf1, #b3e2f3);
+  /* background: linear-gradient(-45deg, #6acdf1, #b3e2f3);
   background-size: 400% 400%;
-  animation: soothing 8s linear alternate infinite;
-  /* background-color: rgb(255, 255, 255); */
+  animation: soothing 8s linear alternate infinite; */
+  background-color: rgb(202, 223, 250);
 }
 
 @keyframes soothing {
