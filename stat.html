@@ -1,115 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!--head-->
 
-<!--head-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
+    <title>Stats | Code.Meds</title>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name = "viewport" content="width=device-width, initial-scale=1">
-    
-<title>Stats | Code.Meds</title>
+    <link rel="icon" href="./vac.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="stat-styles.css" />
+    <link rel="stylesheet" href="./index-styles.css" />
+    <script src="statscheck.js"></script>
+    <script src="script.js"></script>
+  </head>
 
-<link rel="icon" href="./vac.svg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stat-styles.css">
-<link rel="stylesheet" href="./index-styles.css">
-<script src="statscheck.js"></script>
-<script src="script.js"></script>
+  <!--head-->
 
-</head>
+  <!--body-->
 
-<!--head-->
+  <body style="margin: 0">
+    <div class="topnav" id="myTopnav">
+      <a href="./index.html"
+        ><img src="./vac.svg" height="20" width="auto" alt="Code.Meds Logo"
+      /></a>
+      <a href="./stat.html" class="active">Stats</a>
+      <a href="./DownloadCert.html">Download Certificate</a>
+      <!--     <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a> -->
+      <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
 
-<!--body-->
+    <br />
 
-<body style="margin: 0">
+    <form id="form">
+      <label for="states"><center>Choose a State:</center></label>
+      <div class="custom-select" style="width: 350px">
+        <select id="state" name="states">
+          <option value="TT" selected>India</option>
+          <option value="AN">Andaman and Nicobar Islands</option>
+          <option value="AP">Andhra Pradesh</option>
+          <option value="AR">Arunachal Pradesh</option>
+          <option value="AS">Assam</option>
+          <option value="BR">Bihar</option>
+          <option value="CH">Chandigarh</option>
+          <option value="CT">Chhattisgarh</option>
+          <option value="DL">Delhi</option>
+          <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+          <option value="GA">Kerala</option>
+          <option value="GJ">Gujarat</option>
+          <option value="HP">Himachal Pradesh</option>
+          <option value="HR">Haryana</option>
+          <option value="JH">Jharkhand</option>
+          <option value="JK">Jammu and Kashmir</option>
+          <option value="KA">Karnataka</option>
+          <option value="KL">Kerala</option>
+          <option value="LA">Ladakh</option>
+          <option value="LD">Lakshadweep</option>
+          <option value="MH">Maharastra</option>
+          <option value="ML">Meghalaya</option>
+          <option value="MN">Manipur</option>
+          <option value="MP">Madhya Pradesh</option>
+          <option value="MZ">Mizoram</option>
+          <option value="NL">Nagaland</option>
+          <option value="OR">Odisha</option>
+          <option value="PB">Punjab</option>
+          <option value="PY">Puducherry</option>
+          <option value="RJ">Rajasthan</option>
+          <option value="SK">Sikkim</option>
+          <option value="TG">Telangana</option>
+          <option value="TN">Tamil Nadu</option>
+          <option value="TR">Tripura</option>
+          <option value="UP">Uttar Pradesh</option>
+          <option value="UT">Uttarakhand</option>
+          <option value="WB">West Bengal</option>
+        </select>
+      </div>
+    </form>
 
-<div class="topnav" id="myTopnav">
-    <a href="./index.html"><img src="./vac.svg" height="20" width="auto" alt="Code.Meds Logo"></a>
-    <a href="./stat.html" class="active">Stats</a>
-    <a href="./DownloadCert.html">Download Certificate</a>
-<!--     <a id="mode" class="my-btn" onclick="darkMode()">Dark Mode</a> -->
-    <a href="javascript:void(0)" class="icon" onclick="myFunction()">
-    
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+    <script type="text/javaScript" src="custom-select.js"></script>
 
+    <center><button class="bttn" onclick="urlcheck()">Search</button></center>
 
-<br>
+    <p id="demo"></p>
+    <p>
+      <center>
+        <p id="table_info"></p>
+      </center>
 
+      <!--body-->
+    </p>
 
-<form id="form">
-<label for="states"><center>Choose a State:</center></label>
-<div class="custom-select" style="width: 350px;">
-<select id="state" name="states">
-  <option value="TT" selected>India</option>
-  <option value="AN">Andaman and Nicobar Islands</option>
-  <option value="AP">Andhra Pradesh</option>
-  <option value="AR">Arunachal Pradesh</option>
-  <option value="AS">Assam</option>
-  <option value="BR">Bihar</option>
-  <option value="CH">Chandigarh</option>
-  <option value="CT">Chhattisgarh</option>
-  <option value="DL">Delhi</option>
-  <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
-  <option value="GA">Kerala</option>
-  <option value="GJ">Gujarat</option>
-  <option value="HP">Himachal Pradesh</option>
-  <option value="HR">Haryana</option>
-  <option value="JH">Jharkhand</option>
-  <option value="JK">Jammu and Kashmir</option>
-  <option value="KA">Karnataka</option>
-  <option value="KL">Kerala</option>
-  <option value="LA">Ladakh</option>
-  <option value="LD">Lakshadweep</option>
-  <option value="MH">Maharastra</option>
-  <option value="ML">Meghalaya</option>
-  <option value="MN">Manipur</option>
-  <option value="MP">Madhya Pradesh</option>
-  <option value="MZ">Mizoram</option>
-  <option value="NL">Nagaland</option>
-  <option value="OR">Odisha</option>
-  <option value="PB">Punjab</option>
-  <option value="PY">Puducherry</option>
-  <option value="RJ">Rajasthan</option>
-  <option value="SK">Sikkim</option>
-  <option value="TG">Telangana</option>
-  <option value="TN">Tamil Nadu</option>
-  <option value="TR">Tripura</option>
-  <option value="UP">Uttar Pradesh</option>
-  <option value="UT">Uttarakhand</option>
-  <option value="WB">West Bengal</option>
-</select>
-</div>
+    <div class="floating-action-button" id="stats-cowin">
+      <a href="https://selfregistration.cowin.gov.in/">
+        <img
+          src="covid19logo.jpg"
+          height="70"
+          width="210"
+          alt="CoWin Website Link"
+        />
+      </a>
+    </div>
 
-</form>
-
-<script type="text/javaScript" src="custom-select.js"></script>
-
-<center><button onclick = "urlcheck()">Search</button></center>
-
-<p id = "demo"><p>
-
-<center>
-      <p id = "table_info"></p>  
-</center>
-
-<!--body-->
-
-
-<div class="floating-action-button" id="stats-cowin">
-  <a href = "https://selfregistration.cowin.gov.in/">
-    <img src="covid19logo.jpg" height="70" width="210" alt="CoWin Website Link">
-  </a>
-</div>	
-  
-<footer id="stats-ft">
-Made with Insomnia at AGARTALA by Gintama Fans!
-</footer>
-
-</body>
-
+    <footer id="stats-ft">
+      Made with Insomnia at AGARTALA by Gintama Fans!
+    </footer>
+  </body>
 </html>

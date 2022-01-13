@@ -200,10 +200,6 @@ a {
   padding: 1.5rem;
 }
 
-td {
-  border-radius: 3px;
-}
-
 tr {
   /* background-color: #92f0d0; */
   /* background-color: whitesmoke; */
@@ -239,7 +235,7 @@ thead tr td {
   border-style: solid;
   border-width: 2px;
 }
-
+/* div{ */
 thead tr td:nth-child(1) {
   /* border-color: rgb(232, 26, 63); */
   border-color: rgb(0 0 0 / 10%);
@@ -306,52 +302,57 @@ thead tr td:nth-child(6) {
   /* backdrop-filter: blur(2rem); */
 }
 
-/* hover */
-
 thead tr td:nth-child(1):hover {
   background: linear-gradient(
     to right bottom,
-  rgba(232, 26, 63, 0.2),
-  rgba(232, 26, 63, 0.7));
+    rgb(232, 26, 63, 0.2),
+    rgb(232, 26, 63, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(2):hover {
   background: linear-gradient(
     to right bottom,
-  rgba(97, 131, 141, 0.2),
-  rgba(97, 131, 141, 0.7));
+    rgba(97, 131, 141, 0.2),
+    rgba(97, 131, 141, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(3):hover {
   background: linear-gradient(
     to right bottom,
-  rgba(26, 232, 133, 0.2),
-  rgba(26, 232, 133, 0.7));
+    rgba(26, 232, 133, 0.2),
+    rgba(26, 232, 133, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
+  box-shadow: 1px 5px 3px 0 rgb (20, 179, 102);
 }
 
 thead tr td:nth-child(4):hover {
   background: linear-gradient(
     to right bottom,
-  rgba(241, 130, 82, 0.2),
-  rgba(241, 130, 82, 0.7));
+    rgba(241, 130, 82, 0.2),
+    rgba(241, 130, 82, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(5):hover {
   background: linear-gradient(
     to right bottom,
-  rgba(241, 82, 232, 0.2),
-  rgba(241, 82, 232, 0.7));
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
 }
 
 thead tr td:nth-child(6):hover {
   background: linear-gradient(
     to right bottom,
-   rgba(241, 82, 232, 0.2),
-   rgba(241, 82, 232, 0.7));
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
   /* backdrop-filter: blur(2rem); */
 }
