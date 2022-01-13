@@ -1,0 +1,358 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  line-height: 1.8rem;
+  width: 100vw;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #0488aa;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+i.fa.fa-bars {
+  padding: 1.6px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive a.icon {
+    position: absolute; /* positions relative to closest wraping element*/
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    display: block;
+    text-align: left;
+    float: none;
+  }
+}
+
+/* bright background for inputs */
+#date-input,
+#pin {
+  background-color: white;
+}
+
+.custom-select {
+  position: relative;
+  margin: 5px auto;
+}
+
+/* hiding the original select element */
+.custom-select select {
+  display: none;
+}
+
+/* added rounded border around select-items */
+.select-selected {
+  /* background-color: rgba(146, 224, 226, 0.74); */
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  border-radius: 5px;
+}
+
+.select-selected.select-arrow-active {
+  border-radius: 5px 5px 0 0;
+}
+
+/* Styling the arrow inside the select box with border color and no content */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid; /* transparent;*/
+  border-color: #666 transparent transparent transparent;
+}
+
+/* reversing the arrow direction when selected */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #666 transparent;
+  top: 7px;
+}
+
+.select-items div,
+.select-selected {
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  /* border-radius: 5px; */
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-items {
+  position: absolute;
+  top: 100%; /*skip by a block downward*/
+  /* background-color:rgba(146, 224, 226, 0.74); */
+  /* left and right set to zero to exactly fit the parent div */
+  /* background-color: rgb(255, 255, 255); */
+  left: 0;
+  right: 0;
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover {
+  color: white;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: #aaa;
+}
+
+.select-items {
+  border-radius: 0 0 5px 5px;
+}
+
+/* positioning the footer at the bottom of page */
+footer {
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+  text-align: center;
+  margin-top: 13vh;
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+#stats-cowin {
+  position: absolute;
+  align-items: center;
+  left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
+  transform: translateX(
+    -50%
+  ); /* wrt element's own width move the element half way across right */
+  bottom: 2.5rem;
+}
+
+#stats-cowin:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0px 6px 14px 0 #666;
+}
+
+#stats-ft {
+  position: absolute;
+  top: 100vh;
+}
+
+#stats_table {
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
+#stats_table td {
+  border-radius: 3px;
+  font-weight: bolder;
+  /* height: 15rem; */
+}
+
+tr {
+  /* background-color: #92f0d0; */
+  /* background-color: whitesmoke; */
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr {
+  /* background-color: #c69fcf; */
+  /* background-color: whitesmoke; */
+  line-height: 2rem;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+/* tr:hover {
+  background-color: #c9fdec;
+}
+
+thead tr:hover {
+  background-color: rgb(166, 114, 179);
+} */
+
+thead tr td {
+  border-style: solid;
+  border-width: 2px;
+}
+/* div{ */
+thead tr td:nth-child(1) {
+  /* border-color: rgb(232, 26, 63); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(232, 26, 63, 0.7),
+    rgba(232, 26, 63, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(2) {
+  /* border-color: rgb(97, 131, 141); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(97, 131, 141, 0.7),
+    rgba(97, 131, 141, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(3) {
+  /* border-color: rgb(26, 232, 133); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(26, 232, 133, 0.7),
+    rgba(26, 232, 133, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(4) {
+  /* border-color: rgb(241, 130, 82); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 130, 82, 0.7),
+    rgba(241, 130, 82, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(5) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 188, 0.7),
+    rgba(241, 82, 188, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(6) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.7),
+    rgba(241, 82, 232, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+hover thead tr td:nth-child(1):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgb(232, 26, 63, 0.2),
+    rgb(232, 26, 63, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(2):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(97, 131, 141, 0.2),
+    rgba(97, 131, 141, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(3):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(26, 232, 133, 0.2),
+    rgba(26, 232, 133, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+  box-shadow: 1px 5px 3px 0 rgb (20, 179, 102);
+}
+
+thead tr td:nth-child(4):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 130, 82, 0.2),
+    rgba(241, 130, 82, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(5):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(6):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
