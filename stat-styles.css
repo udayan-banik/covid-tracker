@@ -188,6 +188,18 @@ a {
   top: 100vh;
 }
 
+#stats_table {
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
+#stats_table tbody tr td {
+  border-radius: 3px;
+  /* font-weight: bolder; */
+  padding: 1.5rem;
+}
+
 td {
   border-radius: 3px;
 }

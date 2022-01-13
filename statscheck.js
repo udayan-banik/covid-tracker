@@ -63,7 +63,7 @@ function urlcheck() {
   
 	function createTable(data, StateCode) {
 	  var tbl = document.createElement("table");
-	  tbl.setAttribute("id", "table_info");
+	  tbl.setAttribute("id", "stats_table");
 	  var thd = tbl.createTHead();
 	  var hrow = thd.insertRow(0);
 	  var hcell0 = hrow.insertCell(0);
@@ -123,7 +123,7 @@ function urlcheck() {
 	}
   
 	function addRow(data, StateCode) {
-	  var tbl = document.getElementById("table_info");
+	  var tbl = document.getElementById("stats_table");
 	  var tbody = tbl.tBodies[0];
 	  var trow = tbody.insertRow(-1);
   
