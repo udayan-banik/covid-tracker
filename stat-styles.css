@@ -252,13 +252,24 @@ thead tr td:nth-child(2) {
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
     to right bottom,
+    rgba(150, 95, 254, 0.7),
+    /* rgba(95, 6, 240, 0.7), */ rgba(150, 95, 254, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(3) {
+  /* border-color: rgb(97, 131, 141); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
     rgba(97, 131, 141, 0.7),
     rgba(97, 131, 141, 0.2)
   );
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(3) {
+thead tr td:nth-child(4) {
   /* border-color: rgb(26, 232, 133); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -269,7 +280,7 @@ thead tr td:nth-child(3) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(4) {
+thead tr td:nth-child(5) {
   /* border-color: rgb(241, 130, 82); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -280,7 +291,7 @@ thead tr td:nth-child(4) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(5) {
+thead tr td:nth-child(6) {
   /* border-color: rgb(241, 82, 232); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -291,7 +302,7 @@ thead tr td:nth-child(5) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(6) {
+thead tr td:nth-child(7) {
   /* border-color: rgb(241, 82, 232); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -314,8 +325,8 @@ thead tr td:nth-child(1):hover {
 thead tr td:nth-child(2):hover {
   background: linear-gradient(
     to right bottom,
-    rgba(97, 131, 141, 0.2),
-    rgba(97, 131, 141, 0.7)
+    rgba(149, 90, 243, 0.2),
+    rgba(149, 90, 243, 0.7)
   );
   /* backdrop-filter: blur(2rem); */
 }
@@ -323,14 +334,23 @@ thead tr td:nth-child(2):hover {
 thead tr td:nth-child(3):hover {
   background: linear-gradient(
     to right bottom,
+    rgba(97, 131, 141, 0.2),
+    rgba(97, 131, 141, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(4):hover {
+  background: linear-gradient(
+    to right bottom,
     rgba(26, 232, 133, 0.2),
     rgba(26, 232, 133, 0.7)
   );
   /* backdrop-filter: blur(2rem); */
-  box-shadow: 1px 5px 3px 0 rgb (20, 179, 102);
+  /* box-shadow: 1px 5px 3px 0 rgb (20, 179, 102); */
 }
 
-thead tr td:nth-child(4):hover {
+thead tr td:nth-child(5):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 130, 82, 0.2),
@@ -339,7 +359,7 @@ thead tr td:nth-child(4):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(5):hover {
+thead tr td:nth-child(6):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 82, 232, 0.2),
@@ -348,7 +368,7 @@ thead tr td:nth-child(5):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(6):hover {
+thead tr td:nth-child(7):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 82, 232, 0.2),
