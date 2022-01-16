@@ -72,6 +72,7 @@ function urlcheck() {
     var hcell3 = hrow.insertCell(3);
     var hcell4 = hrow.insertCell(4);
     var hcell5 = hrow.insertCell(5);
+    var hcell6 = hrow.insertCell(6);
 
     //rgb(232, 26, 63);rgb(97, 131, 141);rgb(26, 232, 133);rgb(241, 130, 82);rgb(241, 82, 232);rgb(241, 82, 188);
 
@@ -82,41 +83,52 @@ function urlcheck() {
       myFormat(data[StateCode].delta.confirmed) +
       ")" +
       "</b></span>";
-    hcell1.innerHTML =
+    hcell1.innerHTML = "<b>Active </b>" /*+
+      "<span style='color:rgb(110 5 128)'><b>" +
+      "(&#129145;" +
+      myFormat(
+        data[StateCode].delta.confirmed -
+          data[StateCode].delta.deceased -
+          data[StateCode].delta.recovered
+      ) +
+      ")" +
+      "</b></span>" */;
+    hcell2.innerHTML =
       "<b>Deceased </b>" +
       "<span style='color:rgb(2 84 108)'><b>" +
       "(&#129145;" +
       myFormat(data[StateCode].delta.deceased) +
       ")" +
       "</b></span>";
-    hcell2.innerHTML =
+    hcell3.innerHTML =
       "<b>Recovered </b>" +
       "<span style='color:rgb(0 118 61)'><b>" +
       "(&#129145;" +
       myFormat(data[StateCode].delta.recovered) +
       ")" +
       "</b></span>";
-    hcell3.innerHTML =
+    hcell4.innerHTML =
       "<b>Tested </b>" +
       "<span style='color:rgb(212 84 29)'><b>" +
       "(&#129145;" +
       myFormat(data[StateCode].delta.tested) +
       ")" +
       "</b></span>";
-    hcell4.innerHTML =
+    hcell5.innerHTML =
       "<b>Partially Vaccinated </b>" +
       "<span style='color:rgb(106 2 100)'><b>" +
       "(&#129145;" +
       myFormat(data[StateCode].delta.vaccinated1) +
       ")" +
       "</b></span>";
-    hcell5.innerHTML =
+    hcell6.innerHTML =
       "<b>Fully Vaccinated </b>" +
       "<span style='color:rgb(110 5 75)'><b>" +
       "(&#129145;" +
       myFormat(data[StateCode].delta.vaccinated2) +
       ")" +
       "</b></span>";
+
     tbl.createTBody();
     tbl.setAttribute("cellspacing", "3.5");
     disp.appendChild(tbl);
@@ -133,28 +145,40 @@ function urlcheck() {
     var cell3 = trow.insertCell(3);
     var cell4 = trow.insertCell(4);
     var cell5 = trow.insertCell(5);
+    var cell6 = trow.insertCell(6);
 
     cell0.innerHTML =
       data[StateCode].total.confirmed != undefined
         ? inf.format(data[StateCode].total.confirmed)
         : "";
     cell1.innerHTML =
+      data[StateCode].total.confirmed -
+        data[StateCode].total.deceased -
+        data[StateCode].total.recovered !=
+      undefined
+        ? inf.format(
+            data[StateCode].total.confirmed -
+              data[StateCode].total.deceased -
+              data[StateCode].total.recovered
+          )
+        : "";
+    cell2.innerHTML =
       data[StateCode].total.deceased != undefined
         ? inf.format(data[StateCode].total.deceased)
         : "";
-    cell2.innerHTML =
+    cell3.innerHTML =
       data[StateCode].total.recovered != undefined
         ? inf.format(data[StateCode].total.recovered)
         : "";
-    cell3.innerHTML =
+    cell4.innerHTML =
       data[StateCode].total.tested != undefined
         ? inf.format(data[StateCode].total.tested)
         : "";
-    cell4.innerHTML =
+    cell5.innerHTML =
       data[StateCode].total.vaccinated1 != undefined
         ? inf.format(data[StateCode].total.vaccinated1)
         : "";
-    cell5.innerHTML =
+    cell6.innerHTML =
       data[StateCode].total.vaccinated2 != undefined
         ? inf.format(data[StateCode].total.vaccinated2)
         : "";
