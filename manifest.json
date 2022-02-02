@@ -2,6 +2,7 @@
     "name": "Code.Meds",
     "short_name": "Code.Meds",
     "start_url": "./index.html",
+    "description": "An All-in-one solution for all your Covid related queries",
     "icons": [
         {
           "src": "./manifest-icon-192.png",
