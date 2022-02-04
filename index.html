@@ -93,14 +93,14 @@
 
     <!-- <button class="my-btn-left"><a href="./stat.html">Covid-19 Statistics</a></button> -->
     <center>
-      <div class="card">
+      <div class="card" id="formCard">
         <button
           onclick="pinMethod()"
           class="method_buttons"
           style="
             border: 2px solid transparent;
             border-bottom-color: #7d0cda;
-            color: #7d0cda;
+            color: #000;
           "
         >
           By PIN
@@ -128,7 +128,7 @@
             <select id="districts"></select>
           </div>
 
-          <label for="pin" class="searchByPin"> Enter pincode:</label><br />
+          <label for="pin" class="searchByPin"> Enter pincode: </label><br />
           <input
             type="text"
             id="pin"
@@ -136,7 +136,7 @@
             class="d searchByPin"
           /><br /><br />
 
-          <label for="date-input">Enter date</label><br />
+          <label for="date-input"> Select date </label><br />
           <input
             type="text"
             id="date-input"
@@ -146,7 +146,7 @@
             class="d"
           /><br /><br />
 
-          <label for="age"> Enter age:</label><br />
+          <label for="age"> Select age: </label><br />
           <input type="radio" id="age1" name="age" value="15" class="d" /><label
             for="age"
             >15 - 18</label
@@ -160,7 +160,7 @@
             >45+ </label
           ><br /><br />
 
-          <label for="dose"> Enter dose:</label><br />
+          <label for="dose"> Select dose: </label><br />
           <input
             type="radio"
             id="dose1"

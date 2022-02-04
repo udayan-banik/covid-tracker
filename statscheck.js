@@ -79,52 +79,52 @@ function urlcheck() {
     hcell0.innerHTML =
       "<b>Confirmed </b>" +
       "<span style='color:rgb(178 3 34)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.confirmed) +
       ")" +
       "</b></span>";
-    hcell1.innerHTML = "<b>Active </b>" /*+
+    hcell1.innerHTML = "<b>Active </b>" +
       "<span style='color:rgb(110 5 128)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(
         data[StateCode].delta.confirmed -
           data[StateCode].delta.deceased -
           data[StateCode].delta.recovered
       ) +
       ")" +
-      "</b></span>" */;
+      "</b></span>";
     hcell2.innerHTML =
       "<b>Deceased </b>" +
       "<span style='color:rgb(2 84 108)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.deceased) +
       ")" +
       "</b></span>";
     hcell3.innerHTML =
       "<b>Recovered </b>" +
       "<span style='color:rgb(0 118 61)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.recovered) +
       ")" +
       "</b></span>";
     hcell4.innerHTML =
       "<b>Tested </b>" +
       "<span style='color:rgb(212 84 29)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.tested) +
       ")" +
       "</b></span>";
     hcell5.innerHTML =
       "<b>Partially Vaccinated </b>" +
       "<span style='color:rgb(106 2 100)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.vaccinated1) +
       ")" +
       "</b></span>";
     hcell6.innerHTML =
       "<b>Fully Vaccinated </b>" +
       "<span style='color:rgb(110 5 75)'><b>" +
-      "(&#129145;" +
+      "(" +
       myFormat(data[StateCode].delta.vaccinated2) +
       ")" +
       "</b></span>";
@@ -186,9 +186,14 @@ function urlcheck() {
 } /*end*/
 
 function myFormat(str) {
+  let negative = false;
   formatted = "";
   if (str == undefined) return 0;
   str = str.toString();
+  if (str[0] == '-') {
+    str = str.substring(1, str.length);
+    negative = true;
+  }
   // data[StateCode].delta.confirmed.toString();
   // str2 = data[StateCode].total.deceased.toString()
   // str3 = data[StateCode].total.recovered.toString()
@@ -207,8 +212,14 @@ function myFormat(str) {
       str.substring(0, len - 3) + "." + str.substring(len - 3, len - 2) + "k";
   else formatted = str;
 
+  if (negative) {
+    formatted = '&#129147;' + formatted;
+  } else {
+    formatted = '&#129145;' + formatted;
+  }
+  // console.log(formatted);
+
   return formatted;
-  console.log(formatted);
 }
 
 function myFunction() {
