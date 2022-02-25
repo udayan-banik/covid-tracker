@@ -16,8 +16,9 @@ const { feature } = topojson;
 
 const svg = select("svg");
 
-// svg.attr("width", 0.5*screen.width);
-// svg.attr("height", 3*0.5*screen.width/4)
+if (screen.width < 600)
+    svg.attr("width", 0.7*screen.width);
+    svg.attr("height", 3*0.7*screen.width/4)
 
 const width = svg.attr("width");
 const height = svg.attr("height");
@@ -33,7 +34,13 @@ const pathGenerator = geoPath().projection(projection);
 var states = {};
 var covidData = [];
 
-const sizeScale = scaleSqrt().range([0, 40]);
+const sizeScale = scaleSqrt();
+if (screen.width > 600)
+    sizeScale.range([0, 40]);
+else if (screen.width > 300)
+    sizeScale.range([0, 10]);
+else 
+    sizeScale.range([0, 5]);
 
 const colorScale = scaleOrdinal()
     .domain(["confirmed", "active", "recovered", "deceased"])
@@ -58,7 +65,7 @@ Promise.all([
     }, []);
 
     svg.call(zoom().on("zoom", () => {
-        if (screen.width > 600)
+        // if (screen.width > 600)
             g.attr("transform", d3.event.transform);
     }).scaleExtent([1, 10])
     );
@@ -152,8 +159,8 @@ const fillCircles = (states, covidData, category) => {
     sizeLegend(g,
         {
             sizeScale,
+            width: width,
             height: height,
-            spacing: 50,
             textOffset: 10,
             numTicks: 4,
             circleFill: colorScale(category)

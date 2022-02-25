@@ -16,8 +16,13 @@
     />
     <link rel="stylesheet" href="stat-styles.css" />
     <link rel="stylesheet" href="./index-styles.css" />
+    <link rel="stylesheet" href="./maps/map-styles.css">
     <script src="statscheck.js"></script>
     <script src="script.js"></script>
+    <!-- d3 import here, ;( the only framework in the entire project -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://unpkg.com/topojson"></script>
+    <script src="./maps/sizeLegend.js"></script>
   </head>
 
   <!--head-->
@@ -84,8 +89,6 @@
       </div>
     </form>
 
-    <script type="text/javaScript" src="custom-select.js"></script>
-
     <center><button class="bttn" onclick="urlcheck()">Search</button></center>
 
     <p id="demo"></p>
@@ -97,7 +100,22 @@
       <!--body-->
     </p>
 
-    <div class="floating-action-button" id="stats-cowin">
+    <!-- map svg here -->
+    <center>
+      <div class="custom-select" style="width:250px">
+        <select id="category" onchange="visualize()">
+          <option value="confirmed">Confirmed</option>
+          <option value="active">Active</option>
+          <option value="recovered">Recovered</option>
+          <option value="deceased">Deceased</option>
+        </select>
+      </div>
+      <svg width="960" height="500"></svg>
+    </center>
+
+    <!-- 
+      the cowin button had to be removed for accomodating the map
+      <div class="floating-action-button" id="stats-cowin">
       <a href="https://selfregistration.cowin.gov.in/">
         <img
           src="covid19logo.jpg"
@@ -106,10 +124,12 @@
           alt="CoWin Website Link"
         />
       </a>
-    </div>
+    </div> -->
 
     <footer id="stats-ft">
       Made with Insomnia at AGARTALA by Gintama Fans!
     </footer>
+    <script src="./maps/visualize.js"></script>
+    <script type="text/javaScript" src="custom-select.js"></script>
   </body>
 </html>

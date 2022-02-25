@@ -63,6 +63,25 @@ i.fa.fa-bars {
     text-align: left;
     float: none;
   }
+
+
+/* Smaller display won't show the map */
+
+/* position the covid icon */
+/* #stats-cowin {
+  position: absolute;
+  align-items: center;
+  left: 50%; wrt length of the screen, move the left edge of the element helfway
+  transform: translateX(
+    -50%
+  ); wrt element's own width move the element half way across right
+  bottom: 2.5rem;
+} */
+
+/* #stats-ft {
+  position: absolute;
+  top: 100vh;
+} */
 }
 
 /* bright background for inputs */
@@ -167,7 +186,8 @@ footer {
 a {
   text-decoration: none;
 }
-
+/*
+id not needed since the map will push the button down
 #stats-cowin {
   position: absolute;
   align-items: center;
@@ -177,16 +197,21 @@ a {
   ); /* wrt element's own width move the element half way across right */
   bottom: 2.5rem;
 }
+*/
 
 #stats-cowin:hover {
   transform: translateX(-50%) scale(1.05);
   box-shadow: 0px 6px 14px 0 #666;
 }
 
+/*
+id not needed since the map will push the footer down
+according to the usual document flow
 #stats-ft {
   position: absolute;
   top: 100vh;
 }
+*/
 
 #stats_table {
   width: 100vw;
@@ -375,4 +400,8 @@ thead tr td:nth-child(7):hover {
     rgba(241, 82, 232, 0.7)
   );
   /* backdrop-filter: blur(2rem); */
+}
+
+svg {
+  background-color: white;
 }
