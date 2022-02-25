@@ -384,6 +384,7 @@ function customSelect() {
         for (let j = 0; j < OptionsCount; j++) {
           if (selectEle.options[j].innerHTML == this.innerHTML) {
             selectEle.selectedIndex = j;
+            selectEle.onchange(); // now onchage function is mannually called from here
             selectedDiv.innerHTML = this.innerHTML;
             let selectedInDiv =
               this.parentNode.getElementsByClassName("same-as-selected");
@@ -394,7 +395,7 @@ function customSelect() {
               this.parentNode.parentNode.getElementsByTagName("select")[0] ==
               document.getElementById("states")
             )
-              loadDistricts();
+              // loadDistricts();  // loaded districts from here not from onchange
             break;
           }
         }

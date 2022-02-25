@@ -188,7 +188,7 @@ function urlcheck() {
 function myFormat(str) {
   let negative = false;
   formatted = "";
-  if (str == undefined) return 0;
+  if (str == undefined || str == NaN) return 0;
   str = str.toString();
   if (str[0] == '-') {
     str = str.substring(1, str.length);
@@ -209,7 +209,7 @@ function myFormat(str) {
       str.substring(0, len - 5) + "." + str.substring(len - 5, len - 4) + "L";
   else if (len > 3)
     formatted =
-      str.substring(0, len - 3) + "." + str.substring(len - 3, len - 2) + "k";
+      str.substring(0, len - 3) + "." + str.substring(len - 3, len - 2) + "K";
   else formatted = str;
 
   if (negative) {

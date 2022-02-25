@@ -1,12 +1,25 @@
 const sizeLegend = (selection, props) => {
     const {
         sizeScale,
+        width,
         height,
-        spacing,
         textOffset,
         numTicks, 
         circleFill
     } = props;
+
+    let spacing = 50;
+    let xOffset = width/15;
+    let yOffset = height/2;
+    if (screen.width < 600) {
+        spacing /= 2;
+        xOffset /= 2;
+        yOffset /= 2;
+    } else if (screen.width < 300) {
+        spacing /= 5;
+        xOffset /= 5;
+        yOffset /= 5;
+    }
 
     const ticks = sizeScale.ticks(numTicks)
         .filter(d => d!=0).reverse();
@@ -20,7 +33,7 @@ const sizeLegend = (selection, props) => {
 
     groupsEnter.merge(groups)
         .attr("transform", (d, i) => 
-            `translate(50, ${height/2 + i*spacing})`
+            `translate(${xOffset}, ${yOffset + i*spacing})`
         );
     groups.exit().remove();
 
