@@ -1,10 +1,17 @@
 var info_input = document.getElementsByTagName("input");
 
+var token_input = document.getElementById("token_input");
+
 // var mobile_num = info_input.elements.mobilenumber.value;
 // var otp = info_input.elements.otp.value;
 // var ref_id = info_input.elements.ref_id.value;
 var btn_1 = document.getElementById("my-btn-1");
 var btn_2 = document.getElementById("my-btn-2");
+var toggle_bttn = document.getElementById("toggle-bttn");
+
+var tokenArea = document.getElementById("bearer-token");
+
+var hasToken = false;
 
 var otpGenerated = false;
 var otpConfirmed = false;
@@ -81,10 +88,12 @@ async function confirmOTP() {
     xhr.responseType = 'json';
     xhr.onload = function() {
         console.log(xhr.response);
+        alert("Please keep the token for future reference. Do not share with anyone. It will be valid for 3 minutes.");
         if (xhr.status === 200) {
             console.log("Hoise re");
             console.log(xhr.response.token);
             bearerToken.token = xhr.response.token;
+            tokenArea.value = xhr.response.token;
             console.log(bearerToken.token);
             btn_2.disabled = false;
         }
@@ -118,4 +127,49 @@ function generateCertificate() {
         }
     };
     req.send();
+}
+
+function certificateViaToken() {
+    bearerToken.token = tokenArea.value;
+    var ref_id = token_input.value;
+    
+    var req = new XMLHttpRequest();
+    req.open("GET", "https://cdn-api.co-vin.in/api/v2/registration/certificate/public/download?beneficiary_reference_id="+ref_id, true);
+    req.setRequestHeader("content-type", "application/json;charset=UTF-8");
+    req.setRequestHeader("authorization", "Bearer " + bearerToken.token);
+    req.responseType = "arraybuffer";
+    req.onload = function() {
+        console.log(req.response);
+        if (req.status === 200) {
+            var blob = [];
+            blob.push(req.response);
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(new File(blob, {type: "application/pdf"}));
+            link.download = "certificate.pdf";
+            document.body.appendChild(link);
+            link.click();
+        } else {
+            alert("something went wrong");
+        }
+    };
+    req.send();
+}
+
+function toggleCertDownload() {
+    const viaotps = document.querySelectorAll(".viaOTP");
+    for (let i=0; i<viaotps.length; i++) {
+        viaotps[i].classList.toggle("invisible");
+    }
+    const viatokens = document.querySelectorAll(".viaToken");
+    for (let i=0; i<viatokens.length; i++) {
+        viatokens[i].classList.toggle("invisible");
+    }
+
+    if (!hasToken) {
+        toggle_bttn.textContent = "via OTP";
+        hasToken = true;
+    } else {
+        toggle_bttn.textContent = "via Token";
+        hasToken = false;
+    }
 }

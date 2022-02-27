@@ -405,3 +405,7 @@ thead tr td:nth-child(7):hover {
 svg {
   background-color: white;
 }
+
+.invisible {
+  display: none;
+}
