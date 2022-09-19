@@ -219,7 +219,7 @@ according to the usual document flow
   text-align: center;
 }
 
-#stats_table thead tr td span b {
+#stats_table tbody tr td span b {
   font-family: archia, monospace;
 } 
 
@@ -250,6 +250,19 @@ thead tr {
     rgba(255, 255, 255, 0.3)
   );
   /* backdrop-filter: blur(2rem); */
+}
+
+/* 
+  the background is made brighter to 
+  display the delta colors with contrast
+ */
+
+#stats_table tbody tr {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6)
+  );
 }
 
 /* tr:hover {
