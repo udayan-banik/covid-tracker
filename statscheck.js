@@ -182,7 +182,7 @@ function urlcheck() {
 function myFormat(str) {
   let negative = false;
   formatted = "";
-  if (str === undefined || str === "0") return formatted;
+  if (str === undefined || str === 0) return formatted;
 
   str = str.toString();
   if (str[0] == '-') {
