@@ -28,13 +28,14 @@ const sizeLegend = (selection, props) => {
         .data(ticks);
 
     const groupsEnter = groups
-        .enter().append("g") 
+        .enter().append("g")
         .attr("class", "tick");
 
     groupsEnter.merge(groups)
         .attr("transform", (d, i) => 
             `translate(${xOffset}, ${yOffset + i*spacing})`
         );
+
     groups.exit().remove();
 
     /* This is an example of nesting data joins. Nested
@@ -47,7 +48,10 @@ const sizeLegend = (selection, props) => {
         .attr("fill", circleFill)
         .attr("stroke", circleFill);
 
-    groupsEnter.append("text") // append() will add a text element to 
+    groupsEnter.append("text"); // add text elements to the entering elements
+
+    groupsEnter.merge(groups)
+        .select("text") // modify the text elements of entering as well as update elements
         .text(tickFormatter) // the corresponding array element in groupsEnter
         .attr("class", "legend-text")
         .attr("dy", "0.32em") // magical number to center legend text

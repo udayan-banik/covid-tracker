@@ -23,8 +23,6 @@ if (screen.width < 600)
 const width = svg.attr("width");
 const height = svg.attr("height");
 
-console.log(width, height);
-
 const g = svg.append("g");
 
 // the path generator for map
@@ -59,8 +57,11 @@ Promise.all([
 
     covidData = abbrTable.reduce((accumulator, d, i) => {
         accumulator.push(data[d.Abbreviation].total);
-        accumulator[i].active = accumulator[i].confirmed - accumulator[i].recovered
-                - accumulator[i].deceased;
+        accumulator[i].active = accumulator[i].confirmed?accumulator[i].confirmed:0;
+        accumulator[i].active -= accumulator[i].recovered?accumulator[i].recovered:0;
+        accumulator[i].active -= accumulator[i].deceased?accumulator[i].deceased:0;
+        accumulator[i].active -= accumulator[i].other?accumulator[i].other:0;
+
         return accumulator;
     }, []);
 
