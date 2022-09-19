@@ -76,57 +76,46 @@ function urlcheck() {
 
     //rgb(232, 26, 63);rgb(97, 131, 141);rgb(26, 232, 133);rgb(241, 130, 82);rgb(241, 82, 232);rgb(241, 82, 188);
 
+    var activeDelta = data[StateCode].delta.confirmed?data[StateCode].delta.confirmed:0;
+    activeDelta -= data[StateCode].delta.recovered?data[StateCode].delta.recovered:0;
+    activeDelta -= data[StateCode].delta.deceased?data[StateCode].delta.deceased:0;
+    activeDelta -= data[StateCode].delta.other?data[StateCode].delta.other:0;
+    
     hcell0.innerHTML =
       "<b>Confirmed </b>" +
       "<span style='color:rgb(178 3 34)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.confirmed) +
-      ")" +
       "</b></span>";
     hcell1.innerHTML = "<b>Active </b>" +
       "<span style='color:rgb(110 5 128)'><b>" +
-      "(" +
       myFormat(
-        data[StateCode].delta.confirmed -
-          data[StateCode].delta.deceased -
-          data[StateCode].delta.recovered
+        activeDelta
       ) +
-      ")" +
       "</b></span>";
     hcell2.innerHTML =
       "<b>Deceased </b>" +
       "<span style='color:rgb(2 84 108)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.deceased) +
-      ")" +
       "</b></span>";
     hcell3.innerHTML =
       "<b>Recovered </b>" +
       "<span style='color:rgb(0 118 61)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.recovered) +
-      ")" +
       "</b></span>";
     hcell4.innerHTML =
       "<b>Tested </b>" +
       "<span style='color:rgb(212 84 29)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.tested) +
-      ")" +
       "</b></span>";
     hcell5.innerHTML =
       "<b>Partially Vaccinated </b>" +
       "<span style='color:rgb(106 2 100)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.vaccinated1) +
-      ")" +
       "</b></span>";
     hcell6.innerHTML =
       "<b>Fully Vaccinated </b>" +
       "<span style='color:rgb(110 5 75)'><b>" +
-      "(" +
       myFormat(data[StateCode].delta.vaccinated2) +
-      ")" +
       "</b></span>";
 
     tbl.createTBody();
@@ -147,21 +136,26 @@ function urlcheck() {
     var cell5 = trow.insertCell(5);
     var cell6 = trow.insertCell(6);
 
+    var active = data[StateCode].total.confirmed?data[StateCode].total.confirmed:0;
+    active -= data[StateCode].total.recovered?data[StateCode].total.recovered:0;
+    active -= data[StateCode].total.deceased?data[StateCode].total.deceased:0;
+    active -= data[StateCode].total.other?data[StateCode].total.other:0;
+
     cell0.innerHTML =
       data[StateCode].total.confirmed != undefined
         ? inf.format(data[StateCode].total.confirmed)
         : "";
-    cell1.innerHTML =
-      data[StateCode].total.confirmed -
-        data[StateCode].total.deceased -
-        data[StateCode].total.recovered !=
-      undefined
-        ? inf.format(
-            data[StateCode].total.confirmed -
-              data[StateCode].total.deceased -
-              data[StateCode].total.recovered
-          )
-        : "";
+    cell1.innerHTML = active;
+      // data[StateCode].total.confirmed -
+      //   data[StateCode].total.deceased -
+      //   data[StateCode].total.recovered !=
+      // undefined
+      //   ? inf.format(
+      //       data[StateCode].total.confirmed -
+      //         data[StateCode].total.deceased -
+      //         data[StateCode].total.recovered
+      //     )
+      //   : "";
     cell2.innerHTML =
       data[StateCode].total.deceased != undefined
         ? inf.format(data[StateCode].total.deceased)
@@ -188,7 +182,8 @@ function urlcheck() {
 function myFormat(str) {
   let negative = false;
   formatted = "";
-  if (str == undefined || str == NaN) return 0;
+  if (str === undefined || str === "0") return formatted;
+
   str = str.toString();
   if (str[0] == '-') {
     str = str.substring(1, str.length);
@@ -213,9 +208,9 @@ function myFormat(str) {
   else formatted = str;
 
   if (negative) {
-    formatted = '&#129147;' + formatted;
+    formatted = '(' + '&#129147;' + formatted + ')';
   } else {
-    formatted = '&#129145;' + formatted;
+    formatted = '(' + '&#129145;' + formatted + ')';
   }
   // console.log(formatted);
 

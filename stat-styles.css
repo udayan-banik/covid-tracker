@@ -219,6 +219,10 @@ according to the usual document flow
   text-align: center;
 }
 
+#stats_table thead tr td span b {
+  font-family: 'Azeret Mono', monospace;
+}
+
 #stats_table tbody tr td {
   border-radius: 3px;
   /* font-weight: bolder; */

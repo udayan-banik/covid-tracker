@@ -3,7 +3,6 @@ var numContainer = container.length;
 // console.log(container.length);
 
 for (let ii=0; ii<numContainer; ii++) {
-	console.log(container[ii]);
 	var selectElement = container[ii].getElementsByTagName("select")[0];
 	var numOptions = selectElement.length;
 	// console.log(numOptions);
