@@ -145,7 +145,7 @@ function urlcheck() {
       data[StateCode].total.confirmed != undefined
         ? inf.format(data[StateCode].total.confirmed)
         : "";
-    cell1.innerHTML = active;
+    cell1.innerHTML = active > 0? inf.format(active): "";
       // data[StateCode].total.confirmed -
       //   data[StateCode].total.deceased -
       //   data[StateCode].total.recovered !=
