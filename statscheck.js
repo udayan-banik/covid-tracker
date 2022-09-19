@@ -1,5 +1,5 @@
 function urlcheck() {
-  console.clear();
+  // console.clear();
 
   var getty = document.getElementById("form");
 
@@ -50,8 +50,8 @@ function urlcheck() {
   getJSON(url, function (err, data) {
     if (err !== null) console.log("something went wrong" + err);
     else if (err == null) {
-      console.log(data);
-      console.log(data[StateCode].total); /*start*/
+      // console.log(data);
+      // console.log(data[StateCode].total); /*start*/
 
       // myFormat(data, StateCode);
 
