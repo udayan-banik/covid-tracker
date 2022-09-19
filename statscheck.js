@@ -208,12 +208,11 @@ function myFormat(str) {
   else formatted = str;
 
   if (negative) {
-    formatted = '(' + '&#129147;' + formatted + ')';
+    formatted = '(' + '&darr;' + formatted + ')';
   } else {
-    formatted = '(' + '&#129145;' + formatted + ')';
+    formatted = '(' + '&uarr;' + formatted + ')';
   }
   // console.log(formatted);
-
   return formatted;
 }
 
