@@ -50,16 +50,114 @@ function urlcheck() {
   getJSON(url, function (err, data) {
     if (err !== null) console.log("something went wrong" + err);
     else if (err == null) {
-      // console.log(data);
-      // console.log(data[StateCode].total); /*start*/
-
-      // myFormat(data, StateCode);
 
       createTable(data, StateCode);
 
-      addRow(data, StateCode);
+      csvToJson("/maps/state_abbr.csv", (state_data) => {
+        // setting the names for each state
+        state_data.forEach(d => data[d["Abbreviation"]].name = d["state"]);
+        data["TT"].name = "India";
+
+
+        if (StateCode === "TT") {
+          Object.keys(data).filter(d => d!=="TT").sort()
+            .forEach(
+              d => addRow(data, d)
+            )
+          addRow(data, "TT");
+        } else
+          addRow(data, StateCode);
+      });
     }
   });
+
+  function csvToJson(url, success) {
+    var xht = new XMLHttpRequest();
+    xht.open("GET", url, true);
+    xht.onload = () => {
+      const lines = xht.response.split("\r\n");
+      const keys = lines[0].split(",");
+
+      const data = lines.slice(1).filter(line => line!=="").map(line => {
+        return line.split(",").reduce((row, data, index) => {
+          row[keys[index]] = data;
+          return row;
+        }, {});
+      });
+
+      success(data);
+    };
+
+    xht.send();
+  }
+
+  function sortColumn(columnIndex) {
+    getJSON(url, function(err, data) {
+      if (!err) {
+        csvToJson("/maps/state_abbr.csv", (state_data) => {
+          state_data.forEach(d => data[d["Abbreviation"]].name = d["state"]);
+          data["TT"].name = "India";
+
+          // this piece of code is taken from w3schools
+          // for more information visit
+          // https://www.w3schools.com/howto/howto_js_sort_table.asp
+
+          var table, rows, switching, i, x, y, shouldSwitch;
+          table = document.getElementById("stats_table");
+
+          rows = table.rows;
+          var header = rows[0].childNodes[columnIndex];
+
+          switching = true;
+          /*Make a loop that will continue until
+          no switching has been done:*/
+          while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 2); i++) {
+              //start by saying there should be no switching:
+              shouldSwitch = false;
+              /*Get the two elements you want to compare,
+              one from current row and one from the next:*/
+              x = rows[i].getElementsByTagName("TD")[columnIndex];
+              y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+              //check if the two rows should switch place:
+
+              // if cells are unsorted or sorted in descending order sort in ascending
+              if ((header.sortOrder == 0 || header.sortOrder == 2) && x.sortKey > y.sortKey) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+
+              // if cells are sorted in ascending order sorting in decsending order
+              } else if (header.sortOrder == 1 && x.sortKey < y.sortKey) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+
+            if (shouldSwitch) {
+              /*If a switch has been marked, make the switch
+              and mark that a switch has been done:*/
+              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+            }
+          }
+
+          if (header.sortOrder == 0 || header.sortOrder == 2)
+            header.sortOrder = 1;
+          else if (header.sortOrder == 1)
+            header.sortOrder = 2;
+          
+        });
+      } else {
+        console.log("Some went wrong " + err);
+      }
+    })
+  }
 
   function createTable(data, StateCode) {
     var tbl = document.createElement("table");
@@ -73,31 +171,60 @@ function urlcheck() {
     var hcell4 = hrow.insertCell(4);
     var hcell5 = hrow.insertCell(5);
     var hcell6 = hrow.insertCell(6);
+    var hcell7 = hrow.insertCell(7);
+
+    /*
+     * sortOrder
+     * 0: unsorted
+     * 1: ascending
+     * 2: decending
+     */
 
     //rgb(232, 26, 63);rgb(97, 131, 141);rgb(26, 232, 133);rgb(241, 130, 82);rgb(241, 82, 232);rgb(241, 82, 188);
+    hcell0.innerHTML = 
+      "<b>Name</b>";
     
-    hcell0.innerHTML =
-      "<b>Confirmed </b>";
-    hcell1.innerHTML = "<b>Active </b>";
+    hcell0.sortOrder = 0;
+    hcell0.addEventListener("click", e => { e.stopPropagation(); sortColumn(0); });  
+      
+    hcell1.innerHTML =
+    "<b>Confirmed </b>";
+    hcell1.sortOrder = 0;
+    hcell1.addEventListener("click", e => { e.stopPropagation(); sortColumn(1); });
 
-    hcell2.innerHTML =
-      "<b>Deceased </b>";
-    
+    hcell2.innerHTML = "<b>Active </b>";
+    hcell2.sortOrder = 0;
+    hcell2.addEventListener("click", e => { e.stopPropagation(); sortColumn(2); });
+
     hcell3.innerHTML =
-      "<b>Recovered </b>";
+      "<b>Deceased </b>";
+    hcell3.sortOrder = 0;
+    hcell3.addEventListener("click", e => { e.stopPropagation(); sortColumn(3); });
     
     hcell4.innerHTML =
-      "<b>Tested </b>";
+      "<b>Recovered </b>";
+    hcell4.sortOrder = 0;
+    hcell4.addEventListener("click", e => { e.stopPropagation(); sortColumn(4); });
     
     hcell5.innerHTML =
-      "<b>Partially Vaccinated </b>";
-    
+      "<b>Tested </b>";
+    hcell5.sortOrder = 0;
+    hcell5.addEventListener("click", e => { e.stopPropagation(); sortColumn(5); });
+
     hcell6.innerHTML =
+      "<b>Partially Vaccinated </b>";
+    hcell6.sortOrder = 0;
+    hcell6.addEventListener("click", e => { e.stopPropagation(); sortColumn(6); });
+
+    hcell7.innerHTML =
       "<b>Fully Vaccinated </b>";
+    hcell7.sortOrder = 0;
+    hcell7.addEventListener("click", e => { e.stopPropagation(); sortColumn(7); });
 
     tbl.createTBody();
     tbl.setAttribute("cellspacing", "3.5");
     disp.appendChild(tbl);
+
   }
 
   function addRow(data, StateCode) {
@@ -112,6 +239,7 @@ function urlcheck() {
     var cell4 = trow.insertCell(4);
     var cell5 = trow.insertCell(5);
     var cell6 = trow.insertCell(6);
+    var cell7 = trow.insertCell(7);
 
     var activeDelta = data[StateCode].delta.confirmed?data[StateCode].delta.confirmed:0;
     activeDelta -= data[StateCode].delta.recovered?data[StateCode].delta.recovered:0;
@@ -123,15 +251,20 @@ function urlcheck() {
     active -= data[StateCode].total.deceased?data[StateCode].total.deceased:0;
     active -= data[StateCode].total.other?data[StateCode].total.other:0;
 
-    cell0.innerHTML =
+    cell0.innerHTML = 
+      data[StateCode].name;
+    cell0.sortKey = data[StateCode].name;
+
+    cell1.innerHTML =
       data[StateCode].total.confirmed != undefined
         ? "<span style='color:rgb(178 3 34)'><b>" +
         myFormat(data[StateCode].delta.confirmed) +
         "</b></span><br />" +
         inf.format(data[StateCode].total.confirmed)
         : "";
+    cell1.sortKey = data[StateCode].delta.confirmed?+data[StateCode].delta.confirmed:0;
     
-    cell1.innerHTML = 
+    cell2.innerHTML = 
     active >= 0 ?
     "<span style='color:rgb(110 5 128)'><b>" +
       myFormat(
@@ -140,44 +273,52 @@ function urlcheck() {
       "</b></span><br />" + 
       inf.format(active)
       : "";
-
+    cell2.sortKey = activeDelta;
     
-    cell2.innerHTML =
+    cell3.innerHTML =
       data[StateCode].total.deceased != undefined
         ? "<span style='color:rgb(2 84 108)'><b>" +
         myFormat(data[StateCode].delta.deceased) +
         "</b></span><br />" + 
         inf.format(data[StateCode].total.deceased)
         : "";
+    cell3.sortKey = data[StateCode].delta.deceased?+data[StateCode].delta.deceased:0;
       
-    cell3.innerHTML =
+    cell4.innerHTML =
       data[StateCode].total.recovered != undefined
         ? "<span style='color:rgb(0 118 61)'><b>" +
         myFormat(data[StateCode].delta.recovered) +
         "</b></span><br />" + 
         inf.format(data[StateCode].total.recovered)
         : "";
-    cell4.innerHTML =
+    cell4.sortKey = data[StateCode].delta.recovered?+data[StateCode].delta.recovered:0;
+
+    cell5.innerHTML =
       data[StateCode].total.tested != undefined
         ? "<span style='color:rgb(212 84 29)'><b>" +
         myFormat(data[StateCode].delta.tested) +
         "</b></span><br />" +
         inf.format(data[StateCode].total.tested)
         : "";
-    cell5.innerHTML =
+    cell5.sortKey = data[StateCode].delta.tested?+data[StateCode].delta.tested:0;
+
+    cell6.innerHTML =
       data[StateCode].total.vaccinated1 != undefined
         ? "<span style='color:rgb(106 2 100)'><b>" +
         myFormat(data[StateCode].delta.vaccinated1) +
         "</b></span><br />" +
         inf.format(data[StateCode].total.vaccinated1)
         : "";
-    cell6.innerHTML =
+    cell6.sortKey = data[StateCode].delta.vaccinated1?+data[StateCode].delta.vaccinated1:0;
+
+    cell7.innerHTML =
       data[StateCode].total.vaccinated2 != undefined
         ? "<span style='color:rgb(110 5 75)'><b>" +
         myFormat(data[StateCode].delta.vaccinated2) +
         "</b></span><br />" +
         inf.format(data[StateCode].total.vaccinated2)
         : "";
+    cell7.sortKey = data[StateCode].delta.vaccinated2?+data[StateCode].delta.vaccinated2:0;
   }
 } /*end*/
 

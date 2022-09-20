@@ -192,10 +192,10 @@ id not needed since the map will push the button down
   position: absolute;
   align-items: center;
   left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
-  transform: translateX(
+  /* transform: translateX(
     -50%
-  ); /* wrt element's own width move the element half way across right */
-  bottom: 2.5rem;
+  ); */ /* wrt element's own width move the element half way across right */
+  /* bottom: 2.5rem;
 }
 */
 
@@ -278,7 +278,17 @@ thead tr td {
   border-width: 2px;
 }
 /* div{ */
+
 thead tr td:nth-child(1) {
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 252, 175, 0.7)
+  )
+}
+
+thead tr td:nth-child(2) {
   /* border-color: rgb(232, 26, 63); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -289,7 +299,7 @@ thead tr td:nth-child(1) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(2) {
+thead tr td:nth-child(3) {
   /* border-color: rgb(97, 131, 141); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -300,7 +310,7 @@ thead tr td:nth-child(2) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(3) {
+thead tr td:nth-child(4) {
   /* border-color: rgb(97, 131, 141); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -311,7 +321,7 @@ thead tr td:nth-child(3) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(4) {
+thead tr td:nth-child(5) {
   /* border-color: rgb(26, 232, 133); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -322,7 +332,7 @@ thead tr td:nth-child(4) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(5) {
+thead tr td:nth-child(6) {
   /* border-color: rgb(241, 130, 82); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -333,7 +343,7 @@ thead tr td:nth-child(5) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(6) {
+thead tr td:nth-child(7) {
   /* border-color: rgb(241, 82, 232); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -344,7 +354,7 @@ thead tr td:nth-child(6) {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(7) {
+thead tr td:nth-child(8) {
   /* border-color: rgb(241, 82, 232); */
   border-color: rgb(0 0 0 / 10%);
   background: linear-gradient(
@@ -356,6 +366,15 @@ thead tr td:nth-child(7) {
 }
 
 thead tr td:nth-child(1):hover {
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 252, 175, 0.7),
+    rgba(255, 255, 255, 0.3)
+  )
+}
+
+thead tr td:nth-child(2):hover {
   background: linear-gradient(
     to right bottom,
     rgb(232, 26, 63, 0.2),
@@ -364,7 +383,7 @@ thead tr td:nth-child(1):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(2):hover {
+thead tr td:nth-child(3):hover {
   background: linear-gradient(
     to right bottom,
     rgba(149, 90, 243, 0.2),
@@ -373,7 +392,7 @@ thead tr td:nth-child(2):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(3):hover {
+thead tr td:nth-child(4):hover {
   background: linear-gradient(
     to right bottom,
     rgba(97, 131, 141, 0.2),
@@ -382,7 +401,7 @@ thead tr td:nth-child(3):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(4):hover {
+thead tr td:nth-child(5):hover {
   background: linear-gradient(
     to right bottom,
     rgba(26, 232, 133, 0.2),
@@ -392,7 +411,7 @@ thead tr td:nth-child(4):hover {
   /* box-shadow: 1px 5px 3px 0 rgb (20, 179, 102); */
 }
 
-thead tr td:nth-child(5):hover {
+thead tr td:nth-child(6):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 130, 82, 0.2),
@@ -401,7 +420,7 @@ thead tr td:nth-child(5):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(6):hover {
+thead tr td:nth-child(7):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 82, 232, 0.2),
@@ -410,7 +429,7 @@ thead tr td:nth-child(6):hover {
   /* backdrop-filter: blur(2rem); */
 }
 
-thead tr td:nth-child(7):hover {
+thead tr td:nth-child(8):hover {
   background: linear-gradient(
     to right bottom,
     rgba(241, 82, 232, 0.2),
