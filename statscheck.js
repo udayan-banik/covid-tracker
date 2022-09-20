@@ -92,71 +92,61 @@ function urlcheck() {
   }
 
   function sortColumn(columnIndex) {
-    getJSON(url, function(err, data) {
-      if (!err) {
-        csvToJson("/maps/state_abbr.csv", (state_data) => {
-          state_data.forEach(d => data[d["Abbreviation"]].name = d["state"]);
-          data["TT"].name = "India";
 
-          // this piece of code is taken from w3schools
-          // for more information visit
-          // https://www.w3schools.com/howto/howto_js_sort_table.asp
+    // this piece of code is taken from w3schools
+    // for more information visit
+    // https://www.w3schools.com/howto/howto_js_sort_table.asp
 
-          var table, rows, switching, i, x, y, shouldSwitch;
-          table = document.getElementById("stats_table");
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("stats_table");
 
-          rows = table.rows;
-          var header = rows[0].childNodes[columnIndex];
+    rows = table.rows;
+    var header = rows[0].childNodes[columnIndex];
 
-          switching = true;
-          /*Make a loop that will continue until
-          no switching has been done:*/
-          while (switching) {
-            //start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /*Loop through all table rows (except the
-            first, which contains table headers):*/
-            for (i = 1; i < (rows.length - 2); i++) {
-              //start by saying there should be no switching:
-              shouldSwitch = false;
-              /*Get the two elements you want to compare,
-              one from current row and one from the next:*/
-              x = rows[i].getElementsByTagName("TD")[columnIndex];
-              y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
-              //check if the two rows should switch place:
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 1; i < (rows.length - 2); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].childNodes[columnIndex];
+        y = rows[i + 1].childNodes[columnIndex];
+        //check if the two rows should switch place:
 
-              // if cells are unsorted or sorted in descending order sort in ascending
-              if ((header.sortOrder == 0 || header.sortOrder == 2) && x.sortKey > y.sortKey) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
+        // if cells are unsorted or sorted in descending order sort in ascending
+        if ((header.sortOrder == 0 || header.sortOrder == 2) && x.sortKey > y.sortKey) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
 
-              // if cells are sorted in ascending order sorting in decsending order
-              } else if (header.sortOrder == 1 && x.sortKey < y.sortKey) {
-                shouldSwitch = true;
-                break;
-              }
-            }
-
-            if (shouldSwitch) {
-              /*If a switch has been marked, make the switch
-              and mark that a switch has been done:*/
-              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-              switching = true;
-            }
-          }
-
-          if (header.sortOrder == 0 || header.sortOrder == 2)
-            header.sortOrder = 1;
-          else if (header.sortOrder == 1)
-            header.sortOrder = 2;
-          
-        });
-      } else {
-        console.log("Some went wrong " + err);
+        // if cells are sorted in ascending order sorting in decsending order
+        } else if (header.sortOrder == 1 && x.sortKey < y.sortKey) {
+          shouldSwitch = true;
+          break;
+        } else if (header.sortOrder > 2 || header.sortOrder < 0)
+          break;
       }
-    })
+
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+
+    if (header.sortOrder == 0 || header.sortOrder == 2)
+      header.sortOrder = 1;
+    else if (header.sortOrder == 1)
+      header.sortOrder = 2;
   }
 
   function createTable(data, StateCode) {
