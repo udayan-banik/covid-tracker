@@ -1,3 +1,186 @@
+const statesObj = [
+  {
+    code: "1",
+    state: "Andaman and Nicobar Islands",
+    Abbreviation: "AN"
+  },
+  {
+    code: "2",
+    state: "Andhra Pradesh",
+    Abbreviation: "AP"
+  },
+  {
+    code: "3",
+    state: "Arunachal Pradesh",
+    Abbreviation: "AR"
+  },
+  {
+    code: "4",
+    state: "Assam",
+    Abbreviation: "AS"
+  },
+  {
+    code: "5",
+    state: "Bihar",
+    Abbreviation: "BR"
+  },
+  {
+    code: "6",
+    state: "Chandigarh",
+    Abbreviation: "CH"
+  },
+  {
+    code: "7",
+    state: "Chhattisgarh",
+    Abbreviation: "CT"
+  },
+  {
+    code: "8",
+    state: "Dadra and Nagar Haveli and Daman and Diu",
+    Abbreviation: "DN"
+  },
+  {
+    code: "9",
+    state: "Delhi",
+    Abbreviation: "DL"
+  },
+  {
+    code: "10",
+    state: "Goa",
+    Abbreviation: "GA"
+  },
+  {
+    code: "11",
+    state: "Gujarat",
+    Abbreviation: "GJ"
+  },
+  {
+    code: "12",
+    state: "Haryana",
+    Abbreviation: "HR"
+  },
+  {
+    code: "13",
+    state: "Himachal Pradesh",
+    Abbreviation: "HP"
+  },
+  {
+    code: "14",
+    state: "Jammu and Kashmir",
+    Abbreviation: "JK"
+  },
+  {
+    code: "15",
+    state: "Jharkhand",
+    Abbreviation: "JH"
+  },
+  {
+    code: "16",
+    state: "Karnataka",
+    Abbreviation: "KA"
+  },
+  {
+    code: "17",
+    state: "Kerala",
+    Abbreviation: "KL"
+  },
+  {
+    code: "18",
+    state: "Ladakh",
+    Abbreviation: "LA"
+  },
+  {
+    code: "19",
+    state: "Lakshadweep",
+    Abbreviation: "LD"
+  },
+  {
+    code: "20",
+    state: "Madhya Pradesh",
+    Abbreviation: "MP"
+  },
+  {
+    code: "21",
+    state: "Maharashtra",
+    Abbreviation: "MH"
+  },
+  {
+    code: "22",
+    state: "Manipur",
+    Abbreviation: "MN"
+  },
+  {
+    code: "23",
+    state: "Meghalaya",
+    Abbreviation: "ML"
+  },
+  {
+    code: "24",
+    state: "Mizoram",
+    Abbreviation: "MZ"
+  },
+  {
+    code: "25",
+    state: "Nagaland",
+    Abbreviation: "NL"
+  },
+  {
+    code: "26",
+    state: "Odisha",
+    Abbreviation: "OR"
+  },
+  {
+    code: "27",
+    state: "Puducherry",
+    Abbreviation: "PY"
+  },
+  {
+    code: "28",
+    state: "Punjab",
+    Abbreviation: "PB"
+  },
+  {
+    code: "29",
+    state: "Rajasthan",
+    Abbreviation: "RJ"
+  },
+  {
+    code: "30",
+    state: "Sikkim",
+    Abbreviation: "SK"
+  },
+  {
+    code: "31",
+    state: "Tamil Nadu",
+    Abbreviation: "TN"
+  },
+  {
+    code: "32",
+    state: "Telangana",
+    Abbreviation: "TG"
+  },
+  {
+    code: "33",
+    state: "Tripura",
+    Abbreviation: "TR"
+  },
+  {
+    code: "34",
+    state: "Uttar Pradesh",
+    Abbreviation: "UP"
+  },
+  {
+    code: "35",
+    state: "Uttarakhand",
+    Abbreviation: "UT"
+  },
+  {
+    code: "36",
+    state: "West Bengal",
+    Abbreviation: "WB"
+  }
+];
+
 function urlcheck() {
   // console.clear();
 
@@ -53,11 +236,8 @@ function urlcheck() {
 
       createTable(data, StateCode);
 
-      csvToJson("/maps/state_abbr.csv", (state_data) => {
-        // setting the names for each state
-        state_data.forEach(d => data[d["Abbreviation"]].name = d["state"]);
+        statesObj.forEach(d => data[d["Abbreviation"]].name = d["state"]);
         data["TT"].name = "India";
-
 
         if (StateCode === "TT") {
           Object.keys(data).filter(d => d!=="TT").sort()
@@ -67,10 +247,11 @@ function urlcheck() {
           addRow(data, "TT");
         } else
           addRow(data, StateCode);
-      });
     }
   });
 
+  // currently depricated since csv files doesn't load in remote repositories
+  // so we use stateObj instead
   function csvToJson(url, success) {
     var xht = new XMLHttpRequest();
     xht.open("GET", url, true);
