@@ -353,7 +353,7 @@ function urlcheck() {
 
     //rgb(232, 26, 63);rgb(97, 131, 141);rgb(26, 232, 133);rgb(241, 130, 82);rgb(241, 82, 232);rgb(241, 82, 188);
     hcell0.innerHTML = 
-      "<b>Name</b>";
+      "<b>State/UT</b>";
     
     hcell0.sortOrder = 0;
     hcell0.addEventListener("click", e => { e.stopPropagation(); sortColumn(0); });  
