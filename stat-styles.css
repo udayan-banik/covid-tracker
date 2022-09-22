@@ -103,6 +103,7 @@ i.fa.fa-bars {
 /* added rounded border around select-items */
 .select-selected {
   /* background-color: rgba(146, 224, 226, 0.74); */
+  background-color: white;
   box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
   border-radius: 5px;
 }
@@ -132,7 +133,6 @@ i.fa.fa-bars {
 .select-items div,
 .select-selected {
   padding: 8px 16px;
-  background-color: white;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
@@ -150,6 +150,7 @@ i.fa.fa-bars {
   left: 0;
   right: 0;
   height: 500px;
+  background-color: white;
   overflow: scroll;
   overflow-x: hidden;
   box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
@@ -167,6 +168,7 @@ i.fa.fa-bars {
 .select-items div:hover,
 .same-as-selected {
   background-color: #aaa;
+  color: white;
 }
 
 .select-items {

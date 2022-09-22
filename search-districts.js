@@ -71,7 +71,11 @@ function listStates(data) {
     option.value = data.states[i].state_id;
     statesSelect.add(option);
     if (data.states[i].state_name == "Tripura") option.selected = true;
+
+    // populate the states div container once the data arrives
   }
+  // 33 corresponds to tripura
+  customSelect(0, 33);
 
   // populate the districts of the selected state
   let state_id = statesSelect.options[statesSelect.selectedIndex].value;
@@ -87,15 +91,21 @@ function listStates(data) {
 
 function listDistricts(data) {
   districtSelect.innerHTML = "";
+  let preSelected = 0;
   for (let i = 0; i < data.districts.length; i++) {
     let option = document.createElement("option");
     option.innerHTML = data.districts[i].district_name;
     option.value = data.districts[i].district_id;
     districtSelect.add(option);
-    if (data.districts[i].district_name == "West Tripura")
+    if (data.districts[i].district_name == "West Tripura") {
       option.selected = true;
+      preSelected = 7;
+    }
   }
-  customSelect();
+
+  // populate the district div container once the data arrives
+  // 7 corresponds to west tripura
+  customSelect(1, preSelected);
 }
 
 function loadDistricts() {
@@ -107,7 +117,6 @@ function loadDistricts() {
       // console.log(data);
       // console.log(data.districts.length);
       listDistricts(data);
-      customSelect();
     }
   });
 }
@@ -347,12 +356,12 @@ function availableCenters(data, age, dose) {
   return activeCenters;
 }
 
-function customSelect() {
+// this version of customSelect will take the index of 
+// div container of select to populate
+// preSelected elements will be shaded
+function customSelect(ii, preSelected) {
   var container = document.getElementsByClassName("custom-select");
-  var numContainer = container.length;
-  // console.log(container.length);
 
-  for (let ii = 0; ii < numContainer; ii++) {
     if (container[ii].getElementsByClassName("select-selected").length > 0)
       container[ii].getElementsByClassName("select-selected")[0].remove();
     if (container[ii].getElementsByClassName("select-items").length > 0)
@@ -377,7 +386,7 @@ function customSelect() {
       option = document.createElement("div");
       option.innerHTML = selectElement.options[i].innerHTML;
       option.addEventListener("click", function (event) {
-        let selectEle =
+        let selectEle = 
           this.parentNode.parentNode.getElementsByTagName("select")[0];
         let OptionsCount = selectEle.length;
         let selectedDiv = this.parentNode.previousSibling;
@@ -392,11 +401,6 @@ function customSelect() {
             for (let k = 0; k < selectedInDiv.length; k++)
               selectedInDiv[k].removeAttribute("class");
             this.setAttribute("class", "same-as-selected");
-            if (
-              this.parentNode.parentNode.getElementsByTagName("select")[0] ==
-              document.getElementById("states")
-            )
-              // loadDistricts();  // loaded districts from here not from onchange
             break;
           }
         }
@@ -410,10 +414,15 @@ function customSelect() {
       this.nextSibling.classList.toggle("select-hide");
       this.classList.toggle("select-arrow-active");
     });
-  }
+
+  if (preSelected !== undefined)
+    selectItems.childNodes[preSelected]
+      .setAttribute("class", "same-as-selected");
+
   let distDiv = container[1].getElementsByClassName("select-items")[0];
-  if (distDiv.children.length < 14) distDiv.style.height = "auto";
+  if (distDiv && distDiv.children.length < 14) distDiv.style.height = "auto";
 
   let stateDiv = container[0].getElementsByClassName("select-items")[0];
-  stateDiv.style.zIndex = "110";
+  if (stateDiv)
+    stateDiv.style.zIndex = "110";
 }
