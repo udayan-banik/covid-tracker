@@ -32,6 +32,9 @@ const pathGenerator = geoPath().projection(projection);
 var states = {};
 var covidData = [];
 
+var stateOutlines;
+var stateOnFocus = -1;
+
 const sizeScale = scaleSqrt();
 if (screen.width > 600)
     sizeScale.range([0, 40]);
@@ -43,6 +46,13 @@ else
 const colorScale = scaleOrdinal()
     .domain(["confirmed", "active", "recovered", "deceased"])
     .range(['#ff073a', '#007bff', '#28a745', '#6c757d']);
+
+// get the zoom function and set the event handlers on it
+const myZoom = zoom().on("zoom", () => {
+    g.attr("transform", d3.event.transform)
+    // preserve the stroke width while zoom
+        .attr("stroke-width", 1/d3.event.transform.k);
+}).scaleExtent([1, 10]);
 
 Promise.all([
     json("./maps/india.json"),
@@ -65,12 +75,39 @@ Promise.all([
         return accumulator;
     }, []);
 
-    svg.call(zoom().on("zoom", () => {
-        // if (screen.width > 600)
-            g.attr("transform", d3.event.transform);
-    }).scaleExtent([1, 10])
-    );
     
+    // setting the zoom behaviour on svg
+    svg.call(myZoom);
+    
+    // reset the map on clicking the svg
+    svg.on("click", reset);
+
+    // binding data with the dropdown for ease of zooming
+
+
+    /* the key function will be called for both dropdown divs and
+     * each datum in data, 
+     * for dropdowns the data is not defined so it will take i-1
+     * for data key function will return i
+     * it will compare both the values and bind the matching pair
+     */
+    const dropdown = d3.select("#states-select")
+        .select(".select-items")
+        .selectAll("div")
+        .data(states.features.filter(d => d.id !== "India")
+            .sort((a, b) => a.id < b.id),
+            (d, i) => d?i:i-1
+        );
+
+    // update selection should match with 
+    // corresponding state and should zoom 
+    // in map accordingly
+    dropdown.on("click", zoomToState);
+
+    // the exit selection should match to
+    // dropdown corresponding to india
+    dropdown.exit().on("click", reset);
+
     // the rest of the calculation will be in unit scale and 
     // origin (normalizing)
     // until projection is altered
@@ -91,7 +128,6 @@ Promise.all([
     const t = [width/2 - s*x, height/2 - s*y];
 
     projection.scale(s).translate(t);
-
 
     /* This part will be useful in zooming to a particular state, 
     but more on that later. */
@@ -114,6 +150,8 @@ Promise.all([
         .append("title");
 
     fillCircles(states, covidData, "confirmed");
+
+    d3.select("#resetMap").on("click", reset);
 });
 
 const visualize = () => {
@@ -122,6 +160,7 @@ const visualize = () => {
 };
 
 const fillCircles = (states, covidData, category) => {
+    // console.log(pathGenerator.bounds(states.features[32]));
 
     sizeScale.domain([0, max(covidData, d => d[category])])
         .nice(); // round off the domain to a close zero figure
@@ -132,6 +171,10 @@ const fillCircles = (states, covidData, category) => {
         .text((d, i) => d.id + ": " + covidData[i][category]);
         // .text((d, i) => d.id + ": " + covidData[i][category]);
     // add tooltip here
+
+    // zoom to specific state
+    g.selectAll(".state")
+        .on("click", zoomToState);
         
     const stateCircles = g.selectAll(".state-circle").data(states.features);
 
@@ -155,7 +198,11 @@ const fillCircles = (states, covidData, category) => {
         .attr("fill", colorScale(category))
         .attr("stroke", colorScale(category))
         .select("title")
-        .text((d, i) => d.id + ": " + covidData[i][category]);
+        .text((d, i) => d.id + ": " + covidData[i][category])
+
+    enteringCircles
+        .merge(stateCircles)
+        .on("click", zoomToState);
 
     sizeLegend(g,
         {
@@ -167,4 +214,55 @@ const fillCircles = (states, covidData, category) => {
             circleFill: colorScale(category)
         });
 
+    // if any focus state exists change its fill
+    if (stateOnFocus !== -1)
+        d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
+            .transition().style("fill", colorScale(category));
+}
+
+/*
+ * as a side note in newer version of d3
+ * the event object should be taken from function argument
+ * e.g., (event, data) => { ...code }
+ */
+
+// reset function
+const reset = () => {
+    d3.event.stopPropagation();
+    svg.transition().duration(750).call(myZoom.transform, d3.zoomIdentity);
+
+    if (stateOnFocus !== -1)
+    d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
+        .transition()
+        .style("fill", "white")
+        .style("opacity", 1);
+
+    stateOnFocus = -1;
+}
+
+const zoomToState = (d, i) => {
+    // d is state feature object
+    d3.event.stopPropagation();
+    // get the coordinates (top left, bottom right) for bounding box
+    const [[x0, y0], [x1, y1]] = pathGenerator.bounds(d);
+    svg.transition().duration(750).call(myZoom.transform, 
+        d3.zoomIdentity
+        .translate(width/2, height/2)
+        .scale(Math.min(8, 0.95/Math.max((x1-x0)/width, (y1-y0)/height))) // restricting zoom scale to 8, if other goes beyond 8, e.g., chandigardh
+        .translate(-(x0+x1)/2, -(y0+y1)/2)
+        );
+    
+    let category = document.querySelector("#category").value;
+
+    if (stateOnFocus !== -1)
+        d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
+            .transition()
+            .style("fill", "white")
+            .style("opacity", 1);
+
+    d3.select(d3.selectAll(".state")._groups[0][i])
+        .transition()
+        .style("fill", colorScale(category))
+        .style("opacity", "0.2");
+    stateOnFocus = i;
 }
