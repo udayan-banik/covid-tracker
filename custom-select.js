@@ -21,6 +21,7 @@ for (let ii=0; ii<numContainer; ii++) {
 		option = document.createElement("div");
 		option.innerHTML = selectElement.options[i].innerHTML;
 		option.addEventListener("click", function(event) {
+			event.stopPropagation();
 			let selectEle = this.parentNode.parentNode.getElementsByTagName("select")[0];
 			let OptionsCount = selectEle.length;
 			let selectedDiv = this.parentNode.previousSibling;
