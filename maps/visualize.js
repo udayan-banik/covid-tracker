@@ -166,7 +166,8 @@ const fillCircles = (states, covidData, category) => {
         .nice(); // round off the domain to a close zero figure
 
     g.selectAll(".state")
-        .attr("stroke", colorScale(category))
+        .transition().duration(750)
+        .style("stroke", colorScale(category))
         .select("title")
         .text((d, i) => d.id + ": " + covidData[i][category]);
         // .text((d, i) => d.id + ": " + covidData[i][category]);
@@ -194,6 +195,7 @@ const fillCircles = (states, covidData, category) => {
         .attr("class", "state-circle")
         .attr("cx", d => d.properties.centroid[0])
         .attr("cy", d => d.properties.centroid[1])
+        .transition().duration(750)
         .attr("r", (d, i) => sizeScale(covidData[i][category]))
         .attr("fill", colorScale(category))
         .attr("stroke", colorScale(category))
