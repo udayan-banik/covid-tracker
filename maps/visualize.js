@@ -258,12 +258,12 @@ const zoomToState = (d, i) => {
 
     if (stateOnFocus !== -1)
         d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
-            .transition()
+            .transition().duration(750)
             .style("fill", "white")
             .style("opacity", 1);
 
     d3.select(d3.selectAll(".state")._groups[0][i])
-        .transition()
+        .transition().duration(750)
         .style("fill", colorScale(category))
         .style("opacity", "0.2");
     stateOnFocus = i;
