@@ -77,7 +77,9 @@ Promise.all([
 
     
     // setting the zoom behaviour on svg
-    svg.call(myZoom);
+    svg.call(myZoom)
+    // double cilck event is mapped to reset functionality
+        .on("dblclick.zoom", reset);
     
     // reset the map on clicking the svg
     svg.on("click", reset);
