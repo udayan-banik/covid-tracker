@@ -32,8 +32,8 @@ const sizeLegend = (selection, props) => {
         .attr("class", "tick");
 
     groupsEnter.merge(groups)
-        .attr("transform", (d, i) => 
-            `translate(${xOffset}, ${yOffset + i*spacing})`
+    .attr("transform", (d, i) => 
+        `translate(${xOffset}, ${yOffset + i*spacing})`
         );
 
     groups.exit().remove();
@@ -44,6 +44,7 @@ const sizeLegend = (selection, props) => {
     groupsEnter.append("circle") // this circle selection is enter selection, since groupsEnter is an enter selection
         .merge(groups.select("circle")) // this circle selection is update selection, since groups is an update selection
         .attr("class", "legend-circle")
+        .transition().duration(750)
         .attr("r", sizeScale)
         .attr("fill", circleFill)
         .attr("stroke", circleFill);
