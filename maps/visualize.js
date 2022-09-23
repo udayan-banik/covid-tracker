@@ -178,7 +178,13 @@ const fillCircles = (states, covidData, category) => {
 
     // zoom to specific state
     g.selectAll(".state")
-        .on("click", zoomToState);
+        .on("click", (d, i) => {
+            d3.event.stopPropagation();
+            // simulating user clicking the dropdown
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div")
+                .item(i+1).click();
+        });
         
     const stateCircles = g.selectAll(".state-circle").data(states.features);
 
@@ -207,7 +213,14 @@ const fillCircles = (states, covidData, category) => {
 
     enteringCircles
         .merge(stateCircles)
-        .on("click", zoomToState);
+        // same effect of zooming to state
+        .on("click", (d, i) => {
+            d3.event.stopPropagation();
+            // simulating user clicking dropdown
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div")
+                .item(i+1).click();
+        });
 
     sizeLegend(g,
         {
