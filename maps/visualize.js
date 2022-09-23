@@ -77,7 +77,9 @@ Promise.all([
 
     
     // setting the zoom behaviour on svg
-    svg.call(myZoom);
+    svg.call(myZoom)
+    // double cilck event is mapped to reset functionality
+        .on("dblclick.zoom", reset);
     
     // reset the map on clicking the svg
     svg.on("click", reset);
@@ -166,8 +168,9 @@ const fillCircles = (states, covidData, category) => {
         .nice(); // round off the domain to a close zero figure
 
     g.selectAll(".state")
+        .attr("fill", "white")
         .transition().duration(750)
-        .style("stroke", colorScale(category))
+        .attr("stroke", colorScale(category))
         .select("title")
         .text((d, i) => d.id + ": " + covidData[i][category]);
         // .text((d, i) => d.id + ": " + covidData[i][category]);
@@ -219,7 +222,7 @@ const fillCircles = (states, covidData, category) => {
     // if any focus state exists change its fill
     if (stateOnFocus !== -1)
         d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
-            .transition().style("fill", colorScale(category));
+            .transition().duration(750).attr("fill", colorScale(category));
 }
 
 /*
@@ -232,14 +235,18 @@ const fillCircles = (states, covidData, category) => {
 const reset = () => {
     d3.event.stopPropagation();
     svg.transition().duration(750).call(myZoom.transform, d3.zoomIdentity);
+    
+    if (stateOnFocus !== -1) {
+        let category = document.querySelector("#category").value;
 
-    if (stateOnFocus !== -1)
-    d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
-        .transition()
-        .style("fill", "white")
-        .style("opacity", 1);
+        d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
+            .transition().duration(750)
+            .attr("stroke", colorScale(category))
+            .attr("fill", "white")
+            .attr("opacity", 1);
 
-    stateOnFocus = -1;
+            stateOnFocus = -1;
+        }
 }
 
 const zoomToState = (d, i) => {
@@ -259,12 +266,12 @@ const zoomToState = (d, i) => {
     if (stateOnFocus !== -1)
         d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
             .transition().duration(750)
-            .style("fill", "white")
-            .style("opacity", 1);
+            .attr("fill", "white")
+            .attr("opacity", 1);
 
     d3.select(d3.selectAll(".state")._groups[0][i])
         .transition().duration(750)
-        .style("fill", colorScale(category))
-        .style("opacity", "0.2");
+        .attr("fill", colorScale(category))
+        .attr("opacity", "0.2");
     stateOnFocus = i;
 }
