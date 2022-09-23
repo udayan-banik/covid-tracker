@@ -79,10 +79,20 @@ Promise.all([
     // setting the zoom behaviour on svg
     svg.call(myZoom)
     // double cilck event is mapped to reset functionality
-        .on("dblclick.zoom", reset);
+        .on("dblclick.zoom", () => {
+            // simulate clicking India in dropdown
+            d3.event.stopPropagation();
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div").item(0).click();
+        });
     
     // reset the map on clicking the svg
-    svg.on("click", reset);
+    svg.on("click", () => {
+        // simulate clicking India in dropdown
+        d3.event.stopPropagation();
+        document.querySelector(".select-selected").click();
+        document.querySelectorAll(".select-items div").item(0).click();
+    });
 
     // binding data with the dropdown for ease of zooming
 
