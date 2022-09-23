@@ -237,21 +237,14 @@ const reset = () => {
     svg.transition().duration(750).call(myZoom.transform, d3.zoomIdentity);
     
     let category = document.querySelector("#category").value;
-    // if (stateOnFocus !== -1) {
 
-    //     d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
-    //         .transition().duration(750)
-    //         .attr("stroke", colorScale(category))
-    //         .attr("fill", "white")
-    //         .attr("opacity", 1);
-
-    //         stateOnFocus = -1;
-    //     }
     d3.selectAll(".state")
         .transition().duration(750)
         .attr("stroke", colorScale(category))
         .attr("fill", "white")
         .attr("opacity", 1);
+
+    stateOnFocus = -1;
 }
 
 const zoomToState = (d, i) => {
@@ -268,16 +261,10 @@ const zoomToState = (d, i) => {
     
     let category = document.querySelector("#category").value;
 
-    // if (stateOnFocus !== -1)
-    //     d3.select(d3.selectAll(".state")._groups[0][stateOnFocus])
-    //         .transition().duration(750)
-    //         .attr("fill", "white")
-    //         .attr("opacity", 1);
-
     d3.selectAll(".state")
         .transition().duration(750)
         .attr("fill", "white")
-        .attr("fill", "white")
+        .attr("stroke", colorScale(category))
         .attr("opacity", 1);
 
     d3.select(d3.selectAll(".state")._groups[0][i])
