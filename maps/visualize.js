@@ -79,10 +79,20 @@ Promise.all([
     // setting the zoom behaviour on svg
     svg.call(myZoom)
     // double cilck event is mapped to reset functionality
-        .on("dblclick.zoom", reset);
+        .on("dblclick.zoom", () => {
+            // simulate clicking India in dropdown
+            d3.event.stopPropagation();
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div").item(0).click();
+        });
     
     // reset the map on clicking the svg
-    svg.on("click", reset);
+    svg.on("click", () => {
+        // simulate clicking India in dropdown
+        d3.event.stopPropagation();
+        document.querySelector(".select-selected").click();
+        document.querySelectorAll(".select-items div").item(0).click();
+    });
 
     // binding data with the dropdown for ease of zooming
 
@@ -178,7 +188,13 @@ const fillCircles = (states, covidData, category) => {
 
     // zoom to specific state
     g.selectAll(".state")
-        .on("click", zoomToState);
+        .on("click", (d, i) => {
+            d3.event.stopPropagation();
+            // simulating user clicking the dropdown
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div")
+                .item(i+1).click();
+        });
         
     const stateCircles = g.selectAll(".state-circle").data(states.features);
 
@@ -207,7 +223,14 @@ const fillCircles = (states, covidData, category) => {
 
     enteringCircles
         .merge(stateCircles)
-        .on("click", zoomToState);
+        // same effect of zooming to state
+        .on("click", (d, i) => {
+            d3.event.stopPropagation();
+            // simulating user clicking dropdown
+            document.querySelector(".select-selected").click();
+            document.querySelectorAll(".select-items div")
+                .item(i+1).click();
+        });
 
     sizeLegend(g,
         {
