@@ -79,7 +79,7 @@ function gJ() {
   getJSON(url, function (err, data) {
     if (err !== null) console.log("something went wrong" + err);
     else if (err == null) {
-      console.log(data); /*start*/
+      // console.log(data); /*start*/
 
       // boolean to check vaccine availability
       var isAvailable = false;

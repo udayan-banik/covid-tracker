@@ -53,14 +53,17 @@ function toggleMethod() {
     toggleDisplay(distElements[i]);
   }
 
-  getJSONDist(urlDist + "states", function (err, data) {
-    if (err !== null) console.log("something went wrong" + err);
-    else {
-      // console.log(data);
-      // console.log(data.states.length);
-      listStates(data);
-    }
-  });
+  // if the searchByDistrict elements are visible only then 
+  // fetch the district data
+  if (distElements[0].style.display !== "none")
+    getJSONDist(urlDist + "states", function (err, data) {
+      if (err !== null) console.log("something went wrong" + err);
+      else {
+        // console.log(data);
+        // console.log(data.states.length);
+        listStates(data);
+      }
+    });
 }
 
 // populate the states
@@ -185,7 +188,7 @@ function createPages(numEntries) {
   input.style.width = "6rem";
   input.style.marginRight = "3vw";
   let numPages = Math.ceil(numEntries / entriesPerPage);
-  if (numPages > 0) input.placeholder = "1 of " + numPages.toString();
+  if (numPages > 0) input.placeholder = "1 to " + numPages.toString();
   else input.placeholder = "NA";
   container.innerHTML = "";
   container.appendChild(input);
