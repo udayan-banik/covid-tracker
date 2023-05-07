@@ -1,0 +1,19 @@
+path {
+    /* fill: white; */
+    stroke-opacity: 0.3;
+}
+
+.state-circle, .legend-circle {
+    fill-opacity: 0.3;
+}
+
+.legend-text {
+    font-family: sans-serif;;
+}
+
+ /* smaller display won't show the map */
+@media screen and (max-width: 600px) {
+    .legend-text {
+        font-size: 0.5rem;
+    }
+}

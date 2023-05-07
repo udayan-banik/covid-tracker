@@ -1,6 +1,8 @@
 # Covid-tracker
 This is a Covid Vaccine Tracker made using `HTML`, `CSS`, `JavaScript` and [CoWin Open API](https://apisetu.gov.in/public/marketplace/api/cowin).  
-Hosted at https://udayan-banik.github.io/covid-tracker and https://sen-pai.codes
+Hosted at https://udayan-banik.github.io/covid-tracker and https://sen-pai.codes (no longer active) has now moved to https://codemeds.co.in .
+All the codes of this repository are copyright to the owners of this repository.
+Any attempt of copying will be booked and legal action taken against.
 ## Team
 1. [Udayan Banik](https://github.com/banikuday2708)
 2. [Supratim Sarkar](https://github.com/supr4t1m)

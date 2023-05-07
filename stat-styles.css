@@ -1,8 +1,8 @@
 body {
-  margin:0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  min-height:100vh;
+  min-height: 100vh;
 }
 
 .topnav {
@@ -27,7 +27,7 @@ body {
 }
 
 .topnav a.active {
-  background-color: #0488AA;
+  background-color: #0488aa;
   color: white;
 }
 
@@ -40,7 +40,9 @@ i.fa.fa-bars {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
+  .topnav a:not(:first-child) {
+    display: none;
+  }
   .topnav a.icon {
     display: block;
     float: right;
@@ -48,7 +50,9 @@ i.fa.fa-bars {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive a.icon {
     position: absolute; /* positions relative to closest wraping element*/
     right: 0;
@@ -59,10 +63,30 @@ i.fa.fa-bars {
     text-align: left;
     float: none;
   }
+
+
+/* Smaller display won't show the map */
+
+/* position the covid icon */
+/* #stats-cowin {
+  position: absolute;
+  align-items: center;
+  left: 50%; wrt length of the screen, move the left edge of the element helfway
+  transform: translateX(
+    -50%
+  ); wrt element's own width move the element half way across right
+  bottom: 2.5rem;
+} */
+
+/* #stats-ft {
+  position: absolute;
+  top: 100vh;
+} */
 }
 
 /* bright background for inputs */
-#date-input, #pin {
+#date-input,
+#pin {
   background-color: white;
 }
 
@@ -79,6 +103,7 @@ i.fa.fa-bars {
 /* added rounded border around select-items */
 .select-selected {
   /* background-color: rgba(146, 224, 226, 0.74); */
+  background-color: white;
   box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
   border-radius: 5px;
 }
@@ -105,11 +130,11 @@ i.fa.fa-bars {
   top: 7px;
 }
 
-.select-items div, .select-selected {
+.select-items div,
+.select-selected {
   padding: 8px 16px;
-  background-color: white;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, .08);
+  border-color: transparent transparent rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   /* border-radius: 5px; */
   cursor: pointer;
@@ -125,9 +150,10 @@ i.fa.fa-bars {
   left: 0;
   right: 0;
   height: 500px;
+  background-color: white;
   overflow: scroll;
   overflow-x: hidden;
-  box-shadow:0 2px 2px rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
   z-index: 99;
 }
 
@@ -139,8 +165,10 @@ i.fa.fa-bars {
   color: white;
 }
 
-.select-items div:hover, .same-as-selected {
-  background-color: #AAA;
+.select-items div:hover,
+.same-as-selected {
+  background-color: #aaa;
+  color: white;
 }
 
 .select-items {
@@ -149,53 +177,273 @@ i.fa.fa-bars {
 
 /* positioning the footer at the bottom of page */
 footer {
-   width: 100vw;
-   background-color: rgba(255, 255, 255, .4);
-   color: black;
-   text-align: center;
-   margin-top: 13vh;
-   line-height: 2rem;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+  text-align: center;
+  margin-top: 13vh;
+  line-height: 2rem;
 }
 
 a {
   text-decoration: none;
 }
-
+/*
+id not needed since the map will push the button down
 #stats-cowin {
   position: absolute;
   align-items: center;
   left: 50%; /* wrt length of the screen, move the left edge of the element helfway */
-  transform: translateX(-50%);/* wrt element's own width move the element half way across right */
-  bottom: 2.5rem;
+  /* transform: translateX(
+    -50%
+  ); */ /* wrt element's own width move the element half way across right */
+  /* bottom: 2.5rem;
 }
+*/
 
 #stats-cowin:hover {
   transform: translateX(-50%) scale(1.05);
   box-shadow: 0px 6px 14px 0 #666;
 }
 
+/*
+id not needed since the map will push the footer down
+according to the usual document flow
 #stats-ft {
   position: absolute;
   top: 100vh;
 }
+*/
 
-td {
+#stats_table {
+  width: 100vw;
+  margin: auto;
+  text-align: center;
+}
+
+#stats_table tbody tr td span b {
+  font-family: archia, monospace;
+} 
+
+#stats_table tbody tr td {
   border-radius: 3px;
+  /* font-weight: bolder; */
+  padding: 1.5rem;
 }
 
 tr {
-  background-color: #92f0d0;
+  /* background-color: #92f0d0; */
+  /* background-color: whitesmoke; */
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  /* backdrop-filter: blur(2rem); */
 }
 
 thead tr {
-  background-color: rgb(198, 159, 207);
+  /* background-color: #c69fcf; */
+  /* background-color: whitesmoke; */
   line-height: 2rem;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  /* backdrop-filter: blur(2rem); */
 }
 
-tr:hover {
+/* 
+  the background is made brighter to 
+  display the delta colors with contrast
+ */
+
+#stats_table tbody tr {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6)
+  );
+}
+
+/* tr:hover {
   background-color: #c9fdec;
 }
 
 thead tr:hover {
   background-color: rgb(166, 114, 179);
+} */
+
+thead tr td {
+  border-style: solid;
+  border-width: 2px;
+}
+/* div{ */
+
+thead tr td:nth-child(1) {
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 252, 175, 0.7)
+  )
+}
+
+thead tr td:nth-child(2) {
+  /* border-color: rgb(232, 26, 63); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(232, 26, 63, 0.7),
+    rgba(232, 26, 63, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(3) {
+  /* border-color: rgb(97, 131, 141); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(150, 95, 254, 0.7),
+    /* rgba(95, 6, 240, 0.7), */ rgba(150, 95, 254, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(4) {
+  /* border-color: rgb(97, 131, 141); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(97, 131, 141, 0.7),
+    rgba(97, 131, 141, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(5) {
+  /* border-color: rgb(26, 232, 133); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(26, 232, 133, 0.7),
+    rgba(26, 232, 133, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(6) {
+  /* border-color: rgb(241, 130, 82); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 130, 82, 0.7),
+    rgba(241, 130, 82, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(7) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 188, 0.7),
+    rgba(241, 82, 188, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(8) {
+  /* border-color: rgb(241, 82, 232); */
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.7),
+    rgba(241, 82, 232, 0.2)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(1):hover {
+  border-color: rgb(0 0 0 / 10%);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 252, 175, 0.7),
+    rgba(255, 255, 255, 0.3)
+  )
+}
+
+thead tr td:nth-child(2):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgb(232, 26, 63, 0.2),
+    rgb(232, 26, 63, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(3):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(149, 90, 243, 0.2),
+    rgba(149, 90, 243, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(4):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(97, 131, 141, 0.2),
+    rgba(97, 131, 141, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(5):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(26, 232, 133, 0.2),
+    rgba(26, 232, 133, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+  /* box-shadow: 1px 5px 3px 0 rgb (20, 179, 102); */
+}
+
+thead tr td:nth-child(6):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 130, 82, 0.2),
+    rgba(241, 130, 82, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(7):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+thead tr td:nth-child(8):hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(241, 82, 232, 0.2),
+    rgba(241, 82, 232, 0.7)
+  );
+  /* backdrop-filter: blur(2rem); */
+}
+
+svg {
+  background-color: white;
+}
+
+.invisible {
+  display: none;
 }
