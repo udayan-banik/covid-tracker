@@ -107,7 +107,7 @@ Promise.all([
         .select(".select-items")
         .selectAll("div")
         .data(states.features.filter(d => d.id !== "India")
-            .sort((a, b) => a.id < b.id),
+            .sort((a, b) => a.id.localeCompare(b.id)),
             (d, i) => d?i:i-1
         );
 
